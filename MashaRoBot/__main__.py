@@ -379,54 +379,51 @@ def Masha_about_callback(update: Update, context: CallbackContext):
         )
 
 
-@run_async
-def Aturgrup_about_callback(update: Update, context: CallbackContext):
-    query = update.callback_query
-    if query.data == "aturgrup_":
-            text="""*Group Settings 🌐*
-                 \n""",
+    elif query.data == "aturgrup_":
+        query.message.edit_text(
+            text=f"*Group Settings 🌐*"
+            f"",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
                 [
-                 [
-                    InlineKeyboardButton(text="Shield 🛡", callback_data="shield_"),
-                    InlineKeyboardButton(text="Admin 🧑‍✈️", callback_data="atmin_"),
-                 ],
-                 [
-                    InlineKeyboardButton(text="Block 🚫", callback_data="blok_"),
-                    InlineKeyboardButton(text="Anti-Flood ⏳", callback_data="flood_"),   
-                 ],
-                 [
-                    InlineKeyboardButton(text="Bl-Stiker 🃏", callback_data="blstiker_"),
-                    InlineKeyboardButton(text="Delete 🗑", callback_data="delete_"),
-                 ],
-                 [
-                    InlineKeyboardButton(text="Blacklist 📓", callback_data="blacklist_"),
-                    InlineKeyboardButton(text="Filters 💬", callback_data="filter_"),
-                 ],
-                 [
-                    InlineKeyboardButton(text="Reports 🗣", callback_data="report_"),
-                    InlineKeyboardButton(text="Rules 📜", callback_data="rules_"),   
-                 ],
-                 [
-                    InlineKeyboardButton(text="Welcome ⛩", callback_data="welcome_"),
-                    InlineKeyboardButton(text="Notes 📝", callback_data="notes_"),
-                 ],
-                 [
-                    InlineKeyboardButton(text="Log-Channel 📬", callback_data="logchanel_"),
-                    InlineKeyboardButton(text="Warns ⚠️", callback_data="warns_"),   
-                 ],
-                 [
-                    InlineKeyboardButton(text="Night Mode 🌒",callback_data="malam_"),
-                 ],
-                 [
-                    InlineKeyboardButton(text="📚All Cmd", callback_data="help_back"),
-                    InlineKeyboardButton(text="🔒Close", callback_data="kunci_"),
-                    InlineKeyboardButton(text="▶️Other", callback_data="nextgrup_")],
-                 ]
+                    [
+                        InlineKeyboardButton(text="Shield 🛡", callback_data="shield_"),
+                        InlineKeyboardButton(text="Admin 🧑‍✈️", callback_data="atmin_"),
+                    ],
+                    [
+                        InlineKeyboardButton(text="Block 🚫", callback_data="blok_"),
+                        InlineKeyboardButton(text="Anti-Flood ⏳", callback_data="flood_"),   
+                    ],
+                    [
+                        InlineKeyboardButton(text="Bl-Stiker 🃏", callback_data="blstiker_"),
+                        InlineKeyboardButton(text="Delete 🗑", callback_data="delete_"),
+                    ],
+                    [
+                        InlineKeyboardButton(text="Blacklist 📓", callback_data="blacklist_"),
+                        InlineKeyboardButton(text="Filters 💬", callback_data="filter_"),
+                    ],
+                    [
+                        InlineKeyboardButton(text="Reports 🗣", callback_data="report_"),
+                        InlineKeyboardButton(text="Rules 📜", callback_data="rules_"),   
+                    ],
+                    [
+                        InlineKeyboardButton(text="Welcome ⛩", callback_data="welcome_"),
+                        InlineKeyboardButton(text="Notes 📝", callback_data="notes_"),
+                    ],
+                    [
+                        InlineKeyboardButton(text="Log-Channel 📬", callback_data="logchanel_"),
+                        InlineKeyboardButton(text="Warns ⚠️", callback_data="warns_"),   
+                    ],
+                    [
+                        InlineKeyboardButton(text="Night Mode 🌒",callback_data="malam_"),
+                    ],
+                    [
+                        InlineKeyboardButton(text="📚All Cmd", callback_data="help_back"),
+                        InlineKeyboardButton(text="🔒Close", callback_data="kunci_"),
+                        InlineKeyboardButton(text="▶️Other", callback_data="nextgrup_")],
                 ]
-             ),  
+            ),
         )
     elif query.data == "aturgrup_back":
         query.message.edit_text(

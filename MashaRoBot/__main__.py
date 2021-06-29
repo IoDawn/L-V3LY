@@ -379,6 +379,33 @@ def Masha_about_callback(update: Update, context: CallbackContext):
         )
 
 
+@run_async
+def Kunci_about_callback(update: Update, context: CallbackContext):
+    query = update.callback_query
+    if query.data == "kunci_":
+        query.message.edit_text(
+            text="""*Help Menu🔐*
+                 \n""",
+            parse_mode=ParseMode.MARKDOWN,
+            disable_web_page_preview=False,
+            reply_markup=InlineKeyboardMarkup(
+                [
+                 [
+                    InlineKeyboardButton(text="open menu", callback_data="aturgrup_")
+                 ]
+                ]
+            ),
+        )
+    elif query.data == "kunci_back":
+        query.message.edit_text(
+                PM_START_TEXT,
+                reply_markup=InlineKeyboardMarkup(buttons),
+                parse_mode=ParseMode.MARKDOWN,
+                timeout=60,
+                disable_web_page_preview=False,
+        )
+
+
     elif query.data == "aturgrup_":
         query.message.edit_text(
             text=f"*Group Settings 🌐*"
@@ -422,6 +449,46 @@ def Masha_about_callback(update: Update, context: CallbackContext):
                         InlineKeyboardButton(text="📚All Cmd", callback_data="help_back"),
                         InlineKeyboardButton(text="🔒Close", callback_data="kunci_"),
                         InlineKeyboardButton(text="▶️Other", callback_data="nextgrup_")],
+                ]
+            ),
+        )
+    elif query.data == "nextgrup_":
+        query.message.edit_text(
+            text=f"*Group Settings 🌐*"
+            f"",
+            parse_mode=ParseMode.MARKDOWN,
+            disable_web_page_preview=True,
+            reply_markup=InlineKeyboardMarkup(
+                [
+                    [
+                        InlineKeyboardButton(text="Info-User ℹ️", callback_data="user_"),
+                    ],
+                    [
+                        InlineKeyboardButton(text="Stickers 🎭", callback_data="stiker_"),   
+                    ],
+                    [
+                        InlineKeyboardButton(text="Connection 🕹", callback_data="koneksi_"),
+                    ],
+                    [
+                        InlineKeyboardButton(text="Force-Subs 🔔",callback_data="force_"),
+                    ],
+                    [
+                        InlineKeyboardButton(text="Tagger 🔊", callback_data="tag_"),
+                    ],
+                    [
+                        InlineKeyboardButton(text="Federation 🛂", callback_data="federasi_"),
+                    ],
+                    [
+                        InlineKeyboardButton(text="Clean-Blue 🌀", callback_data="blue_"),   
+                    ],
+                    [
+                        InlineKeyboardButton(text="Approve ✅", callback_data="approve_"),
+                        InlineKeyboardButton(text="Disable ❎", callback_data="disable_"),
+                    ],
+                    [
+                        InlineKeyboardButton(text="◀️Back", callback_data="aturgrup_"),
+                        InlineKeyboardButton(text="🔒Close", callback_data="kunci_"),
+                        InlineKeyboardButton(text="📚All Cmd", callback_data="help_back")],
                 ]
             ),
         )
@@ -655,75 +722,6 @@ def Masha_about_callback(update: Update, context: CallbackContext):
             reply_markup=InlineKeyboardMarkup(
                 [[InlineKeyboardButton(text="Back", callback_data="aturgrup_")]]
             ),
-        )
-
-
-    elif query.data == "nextgrup_":
-        query.message.edit_text(
-            text=f"*Group Settings 🌐*"
-            f"",
-            parse_mode=ParseMode.MARKDOWN,
-            disable_web_page_preview=True,
-            reply_markup=InlineKeyboardMarkup(
-                [
-                    [
-                        InlineKeyboardButton(text="Info-User ℹ️", callback_data="user_"),
-                    ],
-                    [
-                        InlineKeyboardButton(text="Stickers 🎭", callback_data="stiker_"),   
-                    ],
-                    [
-                        InlineKeyboardButton(text="Connection 🕹", callback_data="koneksi_"),
-                    ],
-                    [
-                        InlineKeyboardButton(text="Force-Subs 🔔",callback_data="force_"),
-                    ],
-                    [
-                        InlineKeyboardButton(text="Tagger 🔊", callback_data="tag_"),
-                    ],
-                    [
-                        InlineKeyboardButton(text="Federation 🛂", callback_data="federasi_"),
-                    ],
-                    [
-                        InlineKeyboardButton(text="Clean-Blue 🌀", callback_data="blue_"),   
-                    ],
-                    [
-                        InlineKeyboardButton(text="Approve ✅", callback_data="approve_"),
-                        InlineKeyboardButton(text="Disable ❎", callback_data="disable_"),
-                    ],
-                    [
-                        InlineKeyboardButton(text="◀️Back", callback_data="aturgrup_"),
-                        InlineKeyboardButton(text="🔒Close", callback_data="kunci_"),
-                        InlineKeyboardButton(text="📚All Cmd", callback_data="help_back")],
-                ]
-            ),
-        )
-
-
-@run_async
-def Kunci_about_callback(update: Update, context: CallbackContext):
-    query = update.callback_query
-    if query.data == "kunci_":
-        query.message.edit_text(
-            text="""*Help Menu🔐*
-                 \n""",
-            parse_mode=ParseMode.MARKDOWN,
-            disable_web_page_preview=False,
-            reply_markup=InlineKeyboardMarkup(
-                [
-                 [
-                    InlineKeyboardButton(text="Open Back", callback_data="aturgrup_")
-                 ]
-                ]
-            ),
-        )
-    elif query.data == "kunci_back":
-        query.message.edit_text(
-                PM_START_TEXT,
-                reply_markup=InlineKeyboardMarkup(buttons),
-                parse_mode=ParseMode.MARKDOWN,
-                timeout=60,
-                disable_web_page_preview=False,
         )
 
 

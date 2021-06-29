@@ -631,25 +631,22 @@ __help__ = """
  ❍ /admins*:* list of admins in the chat
 
 *Admins only:*
- ❍ /pin*:* silently pins the message replied to - add `'loud'` or `'notify'` to give notifs to users
- ❍ /unpin*:* unpins the currently pinned message
- ❍ /invitelink*:* gets invitelink
- ❍ /promote*:* promotes the user
- ❍ /demote*:* demotes the user
- ❍ /title <title here>*:* sets a custom title for an admin that the bot promoted
- ❍ /admincache*:* force refresh the admins list
- ❍ /antispam <on/off/yes/no>*:* Will toggle our antispam tech or return your current settings.
- ❍ /setgtitle <newtitle>*:* Sets new chat title in your group.
- ❍ /setgpic*:* As a reply to file or photo to set group profile pic!
- ❍ /delgpic*:* Same as above but to remove group profile pic.
- ❍ /setsticker*:* As a reply to some sticker to set it as group sticker set!
- ❍ /setdescription <description>*:* Sets new chat description in group.
- ❍ /zombies*:* Find all deleted accounts in your group.
- ❍ /zombies clean*:* Remove all deleted accounts from your group.
+ ❍ /pin*:* Menyematkan pesan yang dibalas tanpa notif- tambahkan `'loud'` atau `'notify'` untuk memberikan notifikasi kepada anggota grup
+ ❍ /unpin*:* Melepas pin pesan yang saat ini disematkan
+ ❍ /invitelink*:* Dapatkan tautan grup
+ ❍ /promote*:* Promote user
+ ❍ /demote*:* Turunkan jabatan user
+ ❍ /title <title>*:* Menetapkan judul khusus untuk admin yang dipromosikan bot
+ ❍ /admincache*:* Refresh daftar admin
+ ❍ /antispam <on/off>*:* Akan mengaktifkan teknologi antispam kami atau melihat pengaturan Anda saat ini.
+ ❍ /setgtitle <title>*:* Menetapkan judul obrolan baru di grup Anda.
+ ❍ /setgpic*:* Balas ke file atau foto untuk mengatur foto profil grup!
+ ❍ /delgpic*:* Sama seperti di atas tetapi untuk menghapus foto profil grup.
+ ❍ /setsticker*:* Balas ke stiker untuk menjadikannya sebagai pack stiker grup!
+ ❍ /setdescription <deskripsi>*:* Tetapkan deskripsi obrolan baru di grup.
+ ❍ /zombies*:* Temukan semua akun mati di grup Anda.
+ ❍ /zombies clean*:* Hapus semua akun mati dari grup Anda.
  
-*Note:* Night Mode chats get Automatically closed at 12 am(IST)
-and Automatically openned at 6 am(IST) To Prevent Night Spams.
-
 """
 
 ADMINLIST_HANDLER = DisableAbleCommandHandler("admins", adminlist)
@@ -694,7 +691,7 @@ dispatcher.add_handler(SETCHAT_TITLE_HANDLER)
 dispatcher.add_handler(SETSTICKET_HANDLER)
 dispatcher.add_handler(SETDESC_HANDLER)
 
-__mod_name__ = "ᴀᴅᴍɪɴ⚜️"
+__mod_name__ = "Admin"
 __command_list__ = [
     "adminlist",
     "admins",

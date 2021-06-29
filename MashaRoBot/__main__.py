@@ -92,7 +92,7 @@ buttons = [
             text="Plugins", callback_data="help_back"),
     ],
     [  
-        InlineKeyboardButton(text="Bantuan", callback_data="aturgrup_"
+        InlineKeyboardButton(text="Bantuan", callback_data="kunci_"
     ),
     ],
 ]
@@ -705,7 +705,7 @@ def Kunci_about_callback(update: Update, context: CallbackContext):
     query = update.callback_query
     if query.data == "kunci_":
         query.message.edit_text(
-            text="""*Menu Closed🔐*
+            text="""*Help Menu🔐*
                  \n""",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=False,
@@ -763,7 +763,7 @@ def get_help(update: Update, context: CallbackContext):
                         )
                     ],
                     [
-                        InlineKeyboardButton(text="👥 Open here",callback_data="aturgrup_")],
+                        InlineKeyboardButton(text="👥 Open here",callback_data="kunci_")],
                 ]
             ),
         )

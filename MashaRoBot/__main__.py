@@ -668,12 +668,10 @@ def Masha_about_callback(update: Update, context: CallbackContext):
         )
 
 
-@run_async
-def Nextgrup_about_callback(update: Update, context: CallbackContext):
-    query = update.callback_query
-    if query.data == "nextgrup_":
-            text="""*Settings Group*
-                 \n""",
+    elif query.data == "nextgrup_":
+        query.message.edit_text(
+            text=f"*Group Settings 🌐*"
+            f"",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
@@ -709,14 +707,6 @@ def Nextgrup_about_callback(update: Update, context: CallbackContext):
                         InlineKeyboardButton(text="📚All Cmd", callback_data="help_back")],
                 ]
             ),
-        )
-    elif query.data == "nextgrup_back":
-        query.message.edit_text(
-                PM_START_TEXT,
-                reply_markup=InlineKeyboardMarkup(buttons),
-                parse_mode=ParseMode.MARKDOWN,
-                timeout=60,
-                disable_web_page_preview=False,
         )
 
 
@@ -1042,8 +1032,6 @@ def main():
     settings_callback_handler = CallbackQueryHandler(settings_button, pattern=r"stngs_")
 
     about_callback_handler = CallbackQueryHandler(Masha_about_callback, pattern=r"masha_")
-    aturgrup_callback_handler = CallbackQueryHandler(Aturgrup_about_callback, pattern=r"aturgrup_")
-    nextgrup_callback_handler = CallbackQueryHandler(Nextgrup_about_callback, pattern=r"nextgrup_")
     kunci_callback_handler = CallbackQueryHandler(Kunci_about_callback, pattern=r"kunci_")
 
 
@@ -1054,8 +1042,6 @@ def main():
     dispatcher.add_handler(start_handler)
     dispatcher.add_handler(help_handler)
     dispatcher.add_handler(about_callback_handler)
-    dispatcher.add_handler(aturgrup_callback_handler)
-    dispatcher.add_handler(nextgrup_callback_handler)
     dispatcher.add_handler(kunci_callback_handler)
     dispatcher.add_handler(settings_handler)
     dispatcher.add_handler(help_callback_handler)

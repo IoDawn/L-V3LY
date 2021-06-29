@@ -92,7 +92,7 @@ buttons = [
             text="Plugins", callback_data="help_back"),
     ],
     [  
-        InlineKeyboardButton(text="Bantuan", callback_data="permis_"
+        InlineKeyboardButton(text="Bantuan", callback_data="aturgrup_"
     ),
     ],
 ]
@@ -692,7 +692,7 @@ def Masha_about_callback(update: Update, context: CallbackContext):
                         InlineKeyboardButton(text="Disable ❎", callback_data="disable_"),
                     ],
                     [
-                        InlineKeyboardButton(text="◀️Back", callback_data="helpgrup_"),
+                        InlineKeyboardButton(text="◀️Back", callback_data="aturgrup_"),
                         InlineKeyboardButton(text="🔒Close", callback_data="kunci_"),
                         InlineKeyboardButton(text="📚All Cmd", callback_data="help_back")],
                 ]

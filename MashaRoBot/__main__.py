@@ -759,9 +759,6 @@ def get_help(update: Update, context: CallbackContext):
                             text="👤 Open private",
                             url="t.me/{}?start=help".format(context.bot.username),
                         )
-                    ],
-                    [
-                        InlineKeyboardButton(text="👥 Open here",callback_data="kunci_")],
                 ]
             ),
         )
@@ -925,18 +922,18 @@ def get_settings(update: Update, context: CallbackContext):
             msg.reply_text(
                 text,
                 reply_markup=InlineKeyboardMarkup(
+                [
                     [
-                        [
-                            InlineKeyboardButton(
-                                text="Settings",
-                                url="t.me/{}?start=stngs_{}".format(
-                                    context.bot.username, chat.id
-                                ),
-                            )
-                        ]
-                    ]
-                ),
-            )
+                        InlineKeyboardButton(
+                            text="👤 Open private",
+                            url="t.me/{}?start=help".format(context.bot.username),
+                        )
+                    ],
+                    [
+                        InlineKeyboardButton(text="👥 Open here",callback_data="kunci_")],
+                ]
+            ),
+        )
         else:
             text = "Click here to check your settings."
 

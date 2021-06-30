@@ -671,7 +671,7 @@ def get_help(update, context):
             chat.id,
             text,
             InlineKeyboardMarkup(
-                [[InlineKeyboardButton(text="Back", callback_data="aboutmanu_howto")]]
+                [[InlineKeyboardButton(text="Back", callback_data="aboutmanu_tutup")]]
             ),
         )
 

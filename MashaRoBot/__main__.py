@@ -805,15 +805,12 @@ def get_settings(update: Update, context: CallbackContext):
                         [
                             InlineKeyboardButton(
                                 text="Group Settings",
-                                url="t.me/{}?start=stngs_{}".format(
-                                    context.bot.username, chat.id
-                            )
-                        ],
-                        [   
-                            InlineKeyboardButton(text="Plugins Settings",callback_data="aboutmanu_helpgrup")],   
+                                url="callback_data="aboutmanu_helpgrup"           
+                        )
                     ]
-                ),
-            )
+                ]
+            ),
+        )
         else:
             text = "Click here to check your settings."
 

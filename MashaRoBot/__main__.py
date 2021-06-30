@@ -634,8 +634,14 @@ def get_help(update: Update, context: CallbackContext):
                 [
                     [
                         InlineKeyboardButton(
-                            text="Help",
+                            text="Open pm",
                             url="t.me/{}?start=help".format(context.bot.username),
+                        )
+                    ],
+                    [
+                        InlineKeyboardButton(
+                            text="Open here", 
+                            callback_data="aboutmanu_helpgrup"),
                         )
                     ]
                 ]
@@ -804,8 +810,8 @@ def get_settings(update: Update, context: CallbackContext):
                     [
                         [
                             InlineKeyboardButton(
-                                text="Group Settings",
-                                url="callback_data="aboutmanu_helpgrup"           
+                                url="t.me/{}?start=stngs_{}".format(
+                                    context.bot.username, chat.id           
                         )
                     ]
                 ]

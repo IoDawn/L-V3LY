@@ -89,7 +89,7 @@ buttons = [
         InlineKeyboardButton(
             text="About", callback_data="masha_"),
         InlineKeyboardButton(
-            text="Plugins", callback_data="help_back"),
+            text="Plugins", url="t.me/arunasupportbot"),
     ],
     [  
         InlineKeyboardButton(text="Bantuan", callback_data="permis_"
@@ -425,6 +425,9 @@ def Permis_about_callback(update: Update, context: CallbackContext):
                         InlineKeyboardButton(text="Fun📘", callback_data="fun_"),
                         InlineKeyboardButton(text="Tools📙", callback_data="tools_"),
                     ],
+                    [
+                        InlineKeyboardButton(text="All Plugins📚", callback_data="help_back"),
+                    ],
                     [   
                         InlineKeyboardButton(text="🔙Kembali", callback_data="permis_back")],
                 ]
@@ -473,7 +476,7 @@ def Basic_about_callback(update: Update, context: CallbackContext):
                         InlineKeyboardButton(text="Welcome",callback_data="aboutmanu_welcome")
                     ],
                     [   
-                        InlineKeyboardButton(text="🔙Kembali", callback_data="basic_back")],
+                        InlineKeyboardButton(text="🔙Kembali", callback_data="permis_")],
                 ]
             ),
         )
@@ -520,7 +523,7 @@ def Advanced_about_callback(update: Update, context: CallbackContext):
                         InlineKeyboardButton(text="Shield",callback_data="aboutmanu_shield")
                     ],
                     [   
-                        InlineKeyboardButton(text="🔙Kembali", callback_data="advanced_back")],
+                        InlineKeyboardButton(text="🔙Kembali", callback_data="permis_")],
                 ]
             ),
         )
@@ -565,7 +568,7 @@ def Fun_about_callback(update: Update, context: CallbackContext):
                         InlineKeyboardButton(text="Youtube", callback_data="aboutmanu_youtube")
                     ],
                     [   
-                        InlineKeyboardButton(text="🔙Kembali", callback_data="fun_back")],
+                        InlineKeyboardButton(text="🔙Kembali", callback_data="permis_")],
                 ]
             ),
         )
@@ -617,7 +620,7 @@ def Tools_about_callback(update: Update, context: CallbackContext):
                         InlineKeyboardButton(text="Zipper", callback_data="aboutmanu_zipper")
                     ],
                     [   
-                        InlineKeyboardButton(text="🔙Kembali", callback_data="tools_back")],
+                        InlineKeyboardButton(text="🔙Kembali", callback_data="permis_")],
                 ]
             ),
         )

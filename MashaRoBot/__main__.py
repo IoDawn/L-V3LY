@@ -455,7 +455,7 @@ def Basic_about_callback(update: Update, context: CallbackContext):
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
-                        InlineKeyboardButton(text="Admin", callback_data="aboutmanu_admin"),
+                        InlineKeyboardButton(text="Admin", callback_data="atmin_"),
                         InlineKeyboardButton(text="AntiFlood", callback_data="aboutmanu_antiflood"),
                         InlineKeyboardButton(text="Banned", callback_data="aboutmanu_banned"),
                     ],
@@ -480,56 +480,64 @@ def Basic_about_callback(update: Update, context: CallbackContext):
                 ]
             ),
         )
-    elif query.data == "aboutmanu_admin":
+@run_async
+def Atmin_about_callback(update: Update, context: CallbackContext):
+    query = update.callback_query
+    if query.data == "atmin_":
         query.message.edit_text(
-            text=f"*Bantuan untuk ️modul Admin:*"
-            f"\n\n*Admin rights:*"
-            f"\n❍ /pin: reply pesan untuk disematkan, tambahkan 'loud' atau 'notify' untuk memberikan pemberitahuan kepada anggota."
-            f"\n❍ /unpin: melepas pin pesan yang saat ini disematkan."
-            f"\n❍ /invitelink: mendapat tautan grup."
-            f"\n❍ /promote: mempromosikan pengguna"
-            f"\n❍ /demote: menurunkan pengguna."
-            f"\n❍ /title (title): menetapkan judul khusus untuk admin yang dipromosikan bot.",
+            text="""*Bantuan untuk ️modul Admin:*
+                 \n❍ /pin: reply pesan untuk disematkan, tambahkan 'loud' atau 'notify' untuk memberikan pemberitahuan kepada anggota.
+                 ❍ /unpin: melepas pin pesan yang saat ini disematkan.
+                 ❍ /invitelink: mendapat tautan grup.
+                 ❍ /promote: mempromosikan pengguna
+                 ❍ /demote: menurunkan pengguna.
+                 ❍ /title (title): menetapkan judul khusus untuk admin yang dipromosikan bot.""",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
-                        InlineKeyboardButton(text="Manage", callback_data="aboutmanu_amanage"),
-                        InlineKeyboardButton(text="Cleaner", callback_data="aboutmanu_cleaner"),
+                        InlineKeyboardButton(text="Manage", callback_data="amanage_"),
+                        InlineKeyboardButton(text="Cleaner", callback_data="cleaner_"),
                     ],
                     [   
-                        InlineKeyboardButton(text="🔙Kembali", callback_data="permis_back")],
+                        InlineKeyboardButton(text="🔙Kembali", callback_data="basic_")],
                 ]
             ),
         )
-    elif query.data == "aboutmanu_amanage":
+@run_async
+def Amanage_about_callback(update: Update, context: CallbackContext):
+    query = update.callback_query
+    if query.data == "amanage_":
         query.message.edit_text(
-            text=f"*Bantuan untuk ️modul Admin:*"
-            f"\n\n*Manage:*"
-            f"\n❍ /admincache: refresh daftar admin."
-            f"\n❍ /antispam (on/off): Akan mengaktifkan teknologi antispam kami atau mengembalikan pengaturan Anda saat ini."
-            f"\n❍ /setgtitle [title]: Mengatur judul obrolan baru di grup Anda."
-            f"\n❍ /setgpic: Sebagai balasan ke file atau foto untuk mengatur gambar profil grup!"
-            f"\n❍ /delgpic: Sama seperti di atas tetapi untuk menghapus foto profil grup."
-            f"\n❍ /setsticker: Sebagai balasan untuk beberapa stiker untuk ditetapkan sebagai set stiker grup!"
-            f"\n❍ /setdescription (deskripsi): Mengatur deskripsi obrolan baru di grup.",
+            text="""*Bantuan untuk ️modul Admin:*
+                 \n*Manage:*
+                 ❍ /admincache: refresh daftar admin.
+                 ❍ /antispam (on/off): Akan mengaktifkan teknologi antispam kami atau mengembalikan pengaturan Anda saat ini.
+                 ❍ /setgtitle [title]: Mengatur judul obrolan baru di grup Anda.
+                 ❍ /setgpic: Sebagai balasan ke file atau foto untuk mengatur gambar profil grup!
+                 ❍ /delgpic: Sama seperti di atas tetapi untuk menghapus foto profil grup.
+                 ❍ /setsticker: Sebagai balasan untuk beberapa stiker untuk ditetapkan sebagai set stiker grup!
+                 ❍ /setdescription (deskripsi): Mengatur deskripsi obrolan baru di grup.""",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
-                [[InlineKeyboardButton(text="Back", callback_data="aboutmanu_admin")]]
+                [[InlineKeyboardButton(text="Back", callback_data="atmin_")]]
             ),
         )
-    elif query.data == "aboutmanu_cleaner":
+@run_async
+def Cleaner_about_callback(update: Update, context: CallbackContext):
+    query = update.callback_query
+    if query.data == "cleaner_":
         query.message.edit_text(
-            text=f"*Bantuan untuk ️modul Admin:*"
-            f"\n\n*Cleaner:*"
-            f"\n❍ /zombies: Temukan semua akun yang dihapus di grup Anda."
-            f"\n❍ /zombies clean: Hapus semua akun yang dihapus dari grup Anda.",
+            text=f"""*Bantuan untuk ️modul Admin:*
+                 \n*Cleaner:*
+                 ❍ /zombies: Temukan semua akun yang dihapus di grup Anda.
+                 ❍ /zombies clean: Hapus semua akun yang dihapus dari grup Anda.""",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
-                [[InlineKeyboardButton(text="Back", callback_data="aboutmanu_admin")]]
+                [[InlineKeyboardButton(text="Back", callback_data="atmin_")]]
             ),
         )
 
@@ -1948,6 +1956,9 @@ def main():
     advanced_callback_handler = CallbackQueryHandler(Advanced_about_callback, pattern=r"advanced_")
     fun_callback_handler = CallbackQueryHandler(Fun_about_callback, pattern=r"fun_")
     tools_callback_handler = CallbackQueryHandler(Tools_about_callback, pattern=r"tools_")
+    atmin_callback_handler = CallbackQueryHandler(Atmin_about_callback, pattern=r"atmin_")
+    amanage_callback_handler = CallbackQueryHandler(Amanage_about_callback, pattern=r"amanage_")
+    cleaner_callback_handler = CallbackQueryHandler(Cleaner_about_callback, pattern=r"cleaner_")
 
 
     donate_handler = CommandHandler("donate", donate)

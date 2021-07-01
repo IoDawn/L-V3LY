@@ -426,7 +426,7 @@ def Permis_about_callback(update: Update, context: CallbackContext):
                         InlineKeyboardButton(text="Tools📙", callback_data="tools_"),
                     ],
                     [
-                        InlineKeyboardButton(text="All Plugins📚", callback_data="help_back"),
+                        InlineKeyboardButton(text="📚All Plugins📚", callback_data="help_back"),
                     ],
                     [   
                         InlineKeyboardButton(text="🔙Kembali", callback_data="permis_back")],
@@ -2000,6 +2000,23 @@ def main():
     flood_callback_handler = CallbackQueryHandler(Flood_about_callback, pattern=r"flood_")
     banned_callback_handler = CallbackQueryHandler(Banned_about_callback, pattern=r"banned_")
     larang_callback_handler = CallbackQueryHandler(Larang_about_callback, pattern=r"larang_")
+    blacklist_callback_handler = CallbackQueryHandler(Blacklist_about_callback, pattern=r"blacklist_")
+    list_callback_handler = CallbackQueryHandler(List_about_callback, pattern=r"list_")
+    blstiker_callback_handler = CallbackQueryHandler(Blstiker_about_callback, pattern=r"blstiker_")
+    bteks_callback_handler = CallbackQueryHandler(Bteks_about_callback, pattern=r"bteks_")
+    hapus_callback_handler = CallbackQueryHandler(Hapus_about_callback, pattern=r"hapus_")
+    filters_callback_handler = CallbackQueryHandler(Filters_about_callback, pattern=r"filters_")
+    pilter_callback_handler = CallbackQueryHandler(Pilter_about_callback, pattern=r"pilter_")
+    fmark_callback_handler = CallbackQueryHandler(Fmark_callback, pattern=r"fmark_")
+    bisu_callback_handler = CallbackQueryHandler(Bisu_callback, pattern=r"bisu_")
+    muting_callback_handler = CallbackQueryHandler(Muting_callback, pattern=r"muting_")
+    rules_callback_handler = CallbackQueryHandler(Rules_about_callback, pattern=r"rules_")
+    tag_callback_handler = CallbackQueryHandler(Tag_about_callback, pattern=r"tag_")
+    taging_callback_handler = CallbackQueryHandler(Taging_about_callback, pattern=r"taging_")
+    ingat_callback_handler = CallbackQueryHandler(Ingat_about_callback, pattern=r"ingat_")
+    welcome_callback_handler = CallbackQueryHandler(Welcome_about_callback, pattern=r"welcome_")
+    gudbay_callback_handler = CallbackQueryHandler(Gudbay_about_callback, pattern=r"gudbay_")
+    datang_callback_handler = CallbackQueryHandler(Datang_about_callback, pattern=r"datang_")
 
 
     donate_handler = CommandHandler("donate", donate)
@@ -2017,11 +2034,29 @@ def main():
     dispatcher.add_handler(tools_callback_handler)
     dispatcher.add_handler(atmin_callback_handler)
     dispatcher.add_handler(amanage_callback_handler)
+    dispatcher.add_handler(cleaner_callback_handler)
     dispatcher.add_handler(antiflood_callback_handler)
     dispatcher.add_handler(flood_callback_handler)
     dispatcher.add_handler(banned_callback_handler)
     dispatcher.add_handler(larang_callback_handler)
     dispatcher.add_handler(cleaner_callback_handler)
+    dispatcher.add_handler(blacklist_callback_handler)
+    dispatcher.add_handler(list_callback_handler)
+    dispatcher.add_handler(blstiker_callback_handler)
+    dispatcher.add_handler(bteks_callback_handler)
+    dispatcher.add_handler(hapus_callback_handler)
+    dispatcher.add_handler(filters_callback_handler)
+    dispatcher.add_handler(pilter_callback_handler)
+    dispatcher.add_handler(fmark_callback_handler)
+    dispatcher.add_handler(bisu_callback_handler)
+    dispatcher.add_handler(muting_callback_handler)
+    dispatcher.add_handler(rules_callback_handler)
+    dispatcher.add_handler(tag_callback_handler)
+    dispatcher.add_handler(taging_callback_handler)
+    dispatcher.add_handler(ingat_callback_handler)
+    dispatcher.add_handler(welcome_callback_handler)
+    dispatcher.add_handler(gudbay_callback_handler)
+    dispatcher.add_handler(datang_callback_handler)
     dispatcher.add_handler(settings_handler)
     dispatcher.add_handler(help_callback_handler)
     dispatcher.add_handler(settings_callback_handler)

@@ -480,13 +480,57 @@ def Basic_about_callback(update: Update, context: CallbackContext):
                 ]
             ),
         )
-    elif query.data == "basic_back":
+    elif query.data == "aboutmanu_admin":
         query.message.edit_text(
-                PM_START_TEXT,
-                reply_markup=InlineKeyboardMarkup(buttons),
-                parse_mode=ParseMode.MARKDOWN,
-                timeout=60,
-                disable_web_page_preview=False,
+            text=f"*Bantuan untuk ️modul Admin:*"
+            f"\n\n*Admin rights:*"
+            f"\n❍ /pin: reply pesan untuk disematkan, tambahkan 'loud' atau 'notify' untuk memberikan pemberitahuan kepada anggota."
+            f"\n❍ /unpin: melepas pin pesan yang saat ini disematkan."
+            f"\n❍ /invitelink: mendapat tautan grup."
+            f"\n❍ /promote: mempromosikan pengguna"
+            f"\n❍ /demote: menurunkan pengguna."
+            f"\n❍ /title (title): menetapkan judul khusus untuk admin yang dipromosikan bot.",
+            parse_mode=ParseMode.MARKDOWN,
+            disable_web_page_preview=True,
+            reply_markup=InlineKeyboardMarkup(
+                [
+                    [
+                        InlineKeyboardButton(text="Manage", callback_data="aboutmanu_amanage"),
+                        InlineKeyboardButton(text="Cleaner", callback_data="aboutmanu_cleaner"),
+                    ],
+                    [   
+                        InlineKeyboardButton(text="🔙Kembali", callback_data="permis_back")],
+                ]
+            ),
+        )
+    elif query.data == "aboutmanu_amanage":
+        query.message.edit_text(
+            text=f"*Bantuan untuk ️modul Admin:*"
+            f"\n\n*Manage:*"
+            f"\n❍ /admincache: refresh daftar admin."
+            f"\n❍ /antispam (on/off): Akan mengaktifkan teknologi antispam kami atau mengembalikan pengaturan Anda saat ini."
+            f"\n❍ /setgtitle [title]: Mengatur judul obrolan baru di grup Anda."
+            f"\n❍ /setgpic: Sebagai balasan ke file atau foto untuk mengatur gambar profil grup!"
+            f"\n❍ /delgpic: Sama seperti di atas tetapi untuk menghapus foto profil grup."
+            f"\n❍ /setsticker: Sebagai balasan untuk beberapa stiker untuk ditetapkan sebagai set stiker grup!"
+            f"\n❍ /setdescription (deskripsi): Mengatur deskripsi obrolan baru di grup.",
+            parse_mode=ParseMode.MARKDOWN,
+            disable_web_page_preview=True,
+            reply_markup=InlineKeyboardMarkup(
+                [[InlineKeyboardButton(text="Back", callback_data="aboutmanu_admin")]]
+            ),
+        )
+    elif query.data == "aboutmanu_cleaner":
+        query.message.edit_text(
+            text=f"*Bantuan untuk ️modul Admin:*"
+            f"\n\n*Cleaner:*"
+            f"\n❍ /zombies: Temukan semua akun yang dihapus di grup Anda."
+            f"\n❍ /zombies clean: Hapus semua akun yang dihapus dari grup Anda.",
+            parse_mode=ParseMode.MARKDOWN,
+            disable_web_page_preview=True,
+            reply_markup=InlineKeyboardMarkup(
+                [[InlineKeyboardButton(text="Back", callback_data="aboutmanu_admin")]]
+            ),
         )
 
 

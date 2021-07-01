@@ -465,15 +465,15 @@ def Basic_about_callback(update: Update, context: CallbackContext):
                         InlineKeyboardButton(text="B Teks", callback_data="bteks_"),
                     ],
                     [
-                        InlineKeyboardButton(text="Delete", callback_data="aboutmanu_hapus"),
-                        InlineKeyboardButton(text="Filters", callback_data="aboutmanu_filters"),
-                        InlineKeyboardButton(text="Mute",callback_data="aboutmanu_bisu"),
+                        InlineKeyboardButton(text="Delete", callback_data="hapus_"),
+                        InlineKeyboardButton(text="Filters", callback_data="filters_"),
+                        InlineKeyboardButton(text="Mute",callback_data="bisu_"),
                     ],
                     [
-                        InlineKeyboardButton(text="Rules", callback_data="aboutmanu_rules"),
-                        InlineKeyboardButton(text="Tag", callback_data="aboutmanu_tag"),
-                        InlineKeyboardButton(text="Warns", callback_data="aboutmanu_ingat"),
-                        InlineKeyboardButton(text="Welcome",callback_data="aboutmanu_welcome")
+                        InlineKeyboardButton(text="Rules", callback_data="rules_"),
+                        InlineKeyboardButton(text="Tag", callback_data="tag_"),
+                        InlineKeyboardButton(text="Warns", callback_data="ingat_"),
+                        InlineKeyboardButton(text="Welcome",callback_data="welcome_")
                     ],
                     [   
                         InlineKeyboardButton(text="🔙Kembali", callback_data="permis_")],
@@ -630,7 +630,10 @@ d = hari
                 [[InlineKeyboardButton(text="Back", callback_data="banned_")]]
             ),
         )  
-    elif query.data == "aboutmanu_blacklist":
+@run_async
+def Blacklist_about_callback(update: Update, context: CallbackContext):
+    query = update.callback_query
+    if query.data == "blacklist_":
         query.message.edit_text(
             text=f"*Bantuan untuk modul Blacklist:*"
             f"\n\n*Commands*"
@@ -643,14 +646,17 @@ d = hari
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
-                        InlineKeyboardButton(text="About", callback_data="aboutmanu_listkata"),
+                        InlineKeyboardButton(text="About", callback_data="list_"),
                     ],
                     [   
-                        InlineKeyboardButton(text="🔙Kembali", callback_data="aboutmanu_permis")],
+                        InlineKeyboardButton(text="🔙Kembali", callback_data="basic_")],
                 ]
             ),
         )
-    elif query.data == "aboutmanu_listkata":
+@run_async
+def List_about_callback(update: Update, context: CallbackContext):
+    query = update.callback_query
+    if query.data == "list_":
         query.message.edit_text(
             text=f"*Bantuan untuk modul Blacklist:*"
             f"\n\n*About*"
@@ -660,10 +666,13 @@ d = hari
             f"\n- /unblacklist: Logika baris baru yang sama berlaku di sini, sehingga Anda dapat menghapus beberapa pemicu sekaligus.",
             parse_mode=ParseMode.MARKDOWN,
             reply_markup=InlineKeyboardMarkup(
-                [[InlineKeyboardButton(text="Back", callback_data="aboutmanu_blacklist")]]
+                [[InlineKeyboardButton(text="Back", callback_data="blacklist_")]]
             ),
         )
-    elif query.data == "aboutmanu_blstiker":
+@run_async
+def Blstiker_about_callback(update: Update, context: CallbackContext):
+    query = update.callback_query
+    if query.data == "blstiker_":
         query.message.edit_text(
             text=f"*Bantuan untuk modul Blacklist Stiker:*"
             f"\n\n*Commands:*"
@@ -677,14 +686,17 @@ d = hari
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
-                        InlineKeyboardButton(text="About", callback_data="aboutmanu_tikell"),
+                        InlineKeyboardButton(text="About", callback_data="tikel_"),
                     ],
                     [   
-                        InlineKeyboardButton(text="🔙Kembali", callback_data="aboutmanu_permis")],
+                        InlineKeyboardButton(text="🔙Kembali", callback_data="basic_")],
                 ]
             ),
         )
-    elif query.data == "aboutmanu_tikell":
+@run_async
+def Cleaner_about_callback(update: Update, context: CallbackContext):
+    query = update.callback_query
+    if query.data == "tikel_":
         query.message.edit_text(
             text=f"*Bantuan untuk modul Blacklist Stiker:*"
             f"\n\n*About:*"
@@ -694,10 +706,13 @@ d = hari
             f"\n- Link stiker bisa `https://t.me/addstickers/(nama_stiker)` atau cukup (`@sticker`) atau balas pesan stiker.",
             parse_mode=ParseMode.MARKDOWN,
             reply_markup=InlineKeyboardMarkup(
-                [[InlineKeyboardButton(text="Back", callback_data="aboutmanu_blstiker")]]
+                [[InlineKeyboardButton(text="Back", callback_data="blstiker_")]]
             ),
         ) 
-    elif query.data == "aboutmanu_bteks":
+@run_async
+def Bteks_about_callback(update: Update, context: CallbackContext):
+    query = update.callback_query
+    if query.data == "bteks_":
         query.message.edit_text(
             text=f"*Bantuan untuk modul Blue text:*"
             f"\n\n*About:*"
@@ -709,10 +724,13 @@ d = hari
             f"\n❍ /listblue: daftar perintah yang saat ini masuk daftar putih.",
             parse_mode=ParseMode.MARKDOWN,
             reply_markup=InlineKeyboardMarkup(
-                [[InlineKeyboardButton(text="Back", callback_data="aboutmanu_permis")]]
+                [[InlineKeyboardButton(text="Back", callback_data="basic_")]]
             ),
         )
-    elif query.data == "aboutmanu_hapus":
+@run_async
+def Hapus_about_callback(update: Update, context: CallbackContext):
+    query = update.callback_query
+    if query.data == "hapus_":
         query.message.edit_text(
             text=f"*Bantuan untuk modul Delete:*"
             f"\n*Commands:*"
@@ -721,10 +739,13 @@ d = hari
             f"\n❍ /purge (nilai x): menghapus pesan yang dibalas, dan nilai x pesan yang mengikutinya jika membalas pesan.",
             parse_mode=ParseMode.MARKDOWN,
             reply_markup=InlineKeyboardMarkup(
-                [[InlineKeyboardButton(text="Back", callback_data="aboutmanu_permis")]]
+                [[InlineKeyboardButton(text="Back", callback_data="basic_")]]
             ),
         )
-    elif query.data == "aboutmanu_filters":
+@run_async
+def Filters_about_callback(update: Update, context: CallbackContext):
+    query = update.callback_query
+    if query.data == "filters_":
         query.message.edit_text(
             text=f"<b>Bantuan untuk modul Filters:</b>"
             f"\n\n<b>Commands:</b>"
@@ -738,15 +759,18 @@ d = hari
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
-                        InlineKeyboardButton(text="About", callback_data="aboutmanu_pilter"),
-                        InlineKeyboardButton(text="Markdown", callback_data="aboutmanu_fmark"),
+                        InlineKeyboardButton(text="About", callback_data="pilter_"),
+                        InlineKeyboardButton(text="Markdown", callback_data="fmark_"),
                     ],
                     [   
-                        InlineKeyboardButton(text="🔙Kembali", callback_data="aboutmanu_permis")],
+                        InlineKeyboardButton(text="🔙Kembali", callback_data="basic_")],
                 ]
             ),
         )
-    elif query.data == "aboutmanu_pilter":
+@run_async
+def Pilter_about_callback(update: Update, context: CallbackContext):
+    query = update.callback_query
+    if query.data == "pilter_":
         query.message.edit_text(
             text=f"<b>Bantuan untuk modul Filters:</b>"
             f"\n\n<b>About</b>"
@@ -762,10 +786,13 @@ d = hari
             f"\n- Filter juga mendukung pemformatan Markdown seperti: {first}, {last} dll. dan tombol. Cek Markdown untuk tahu lebih banyak!",
             parse_mode=ParseMode.HTML,
             reply_markup=InlineKeyboardMarkup(
-                [[InlineKeyboardButton(text="Back", callback_data="aboutmanu_filters")]]
+                [[InlineKeyboardButton(text="Back", callback_data="filters_")]]
             ),
         )
-    elif query.data == "aboutmanu_fmark":
+@run_async
+def Fmark_about_callback(update: Update, context: CallbackContext):
+    query = update.callback_query
+    if query.data == "fmark_":
         query.message.edit_text(
             text=f"<b>Bantuan untuk modul Filters:</b>"
             f"\n\n<b>Markdownhelp:</b>*"
@@ -786,10 +813,13 @@ d = hari
             f"\n\nIngatlah bahwa pesan Anda HARUS berisi beberapa teks selain hanya sebuah tombol!",
             parse_mode=ParseMode.HTML,
             reply_markup=InlineKeyboardMarkup(
-                [[InlineKeyboardButton(text="Back", callback_data="aboutmanu_filters")]]
+                [[InlineKeyboardButton(text="Back", callback_data="filters_")]]
             ),
         )
-    elif query.data == "aboutmanu_bisu":
+@run_async
+def Bisu_about_callback(update: Update, context: CallbackContext):
+    query = update.callback_query
+    if query.data == "bisu_":
         query.message.edit_text(
             text=f"*Bantuan untuk modul Mute:*"
             f"\n\n*Commands:*"
@@ -801,14 +831,17 @@ d = hari
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
-                        InlineKeyboardButton(text="About", callback_data="aboutmanu_muting"),
+                        InlineKeyboardButton(text="About", callback_data="muting_"),
                     ],
                     [   
-                        InlineKeyboardButton(text="🔙Kembali", callback_data="aboutmanu_permis")],
+                        InlineKeyboardButton(text="🔙Kembali", callback_data="basic_")],
                 ]
             ),
         )
-    elif query.data == "aboutmanu_muting":
+@run_async
+def Muting_about_callback(update: Update, context: CallbackContext):
+    query = update.callback_query
+    if query.data == "muting_":
         query.message.edit_text(
             text=f"*Bantuan untuk modul Mute:*"
             f"\n\n*About:*"
@@ -819,10 +852,13 @@ d = hari
             f"\n/tmute 10m: ini akan membisukan pengguna selama 10 menit",
             parse_mode=ParseMode.MARKDOWN,
             reply_markup=InlineKeyboardMarkup(
-                [[InlineKeyboardButton(text="Back", callback_data="aboutmanu_bisu")]]
+                [[InlineKeyboardButton(text="Back", callback_data="bisu_")]]
             ),
         )
-    elif query.data == "aboutmanu_rules":
+@run_async
+def Rules_about_callback(update: Update, context: CallbackContext):
+    query = update.callback_query
+    if query.data == "rules_":
         query.message.edit_text(
             text=f"*Bantuan untuk modul Rules:*"
             f"\n\n*Commands:*"
@@ -832,10 +868,13 @@ d = hari
             f"\n❍ /clearrules: hapus aturan untuk obrolan ini.",
             parse_mode=ParseMode.MARKDOWN,
             reply_markup=InlineKeyboardMarkup(
-                [[InlineKeyboardButton(text="Back", callback_data="aboutmanu_permis")]]
+                [[InlineKeyboardButton(text="Back", callback_data="basic_")]]
             ),
         )
-    elif query.data == "aboutmanu_tag":
+@run_async
+def Tag_about_callback(update: Update, context: CallbackContext):
+    query = update.callback_query
+    if query.data == "tag_":
         query.message.edit_text(
             text=f"*Bantuan untuk modul Tag:*"
             f"\n\n*Commands:*"
@@ -850,24 +889,30 @@ d = hari
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
-                        InlineKeyboardButton(text="About", callback_data="aboutmanu_taging"),
+                        InlineKeyboardButton(text="About", callback_data="taging_"),
                     ],
                     [   
-                        InlineKeyboardButton(text="🔙Kembali", callback_data="aboutmanu_permis")],
+                        InlineKeyboardButton(text="🔙Kembali", callback_data="basic_")],
                 ]
             ),
         )
-    elif query.data == "aboutmanu_taging":
+@run_async
+def Taging_about_callback(update: Update, context: CallbackContext):
+    query = update.callback_query
+    if query.data == "taging_":
         query.message.edit_text(
             text=f"*Bantuan untuk modul Rules:*"
             f"\n\n*About:*"
             f"\nTag adalah fitur penting untuk menyebutkan semua anggota yang berlangganan di grup. Setiap anggota obrolan dapat berlangganan tagger sendiri dengan cara `/tagme` atau anda dapat menambahkan orang lain menggunakan `/addtag @usernamenya`",
             parse_mode=ParseMode.MARKDOWN,
             reply_markup=InlineKeyboardMarkup(
-                [[InlineKeyboardButton(text="Back", callback_data="aboutmanu_tag")]]
+                [[InlineKeyboardButton(text="Back", callback_data="tag_")]]
             ),
         )
-    elif query.data == "aboutmanu_ingat":
+@run_async
+def Ingat_about_callback(update: Update, context: CallbackContext):
+    query = update.callback_query
+    if query.data == "ingat_":
         query.message.edit_text(
             text=f"Bantuan untuk modul Warns:"
             f"\n\nCommands:"
@@ -884,10 +929,13 @@ d = hari
             disable_web_page_preview=True,
             parse_mode=ParseMode.MARKDOWN,
             reply_markup=InlineKeyboardMarkup(
-                [[InlineKeyboardButton(text="Kembali", callback_data="aboutmanu_permis")]]
+                [[InlineKeyboardButton(text="Kembali", callback_data="basic_")]]
             ),
         )
-    elif query.data == "aboutmanu_welcome":
+@run_async
+def Welcome_about_callback(update: Update, context: CallbackContext):
+    query = update.callback_query
+    if query.data == "welcome_":
         query.message.edit_text(
             text=f"<b>Bantuan untuk modul Welcome:</b>"
             f"\n\n<b>Khusus Admin:*"
@@ -903,15 +951,18 @@ d = hari
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
-                        InlineKeyboardButton(text="Goodbye", callback_data="aboutmanu_gudbay"),
-                        InlineKeyboardButton(text="About", callback_data="aboutmanu_datang"),
+                        InlineKeyboardButton(text="Goodbye", callback_data="gudbay_"),
+                        InlineKeyboardButton(text="About", callback_data="datang_"),
                     ],
                     [   
-                        InlineKeyboardButton(text="🔙Kembali", callback_data="aboutmanu_permis")],
+                        InlineKeyboardButton(text="🔙Kembali", callback_data="basic_")],
                 ]
             ),
         )
-    elif query.data == "aboutmanu_gudbay":
+@run_async
+def Gudbay_about_callback(update: Update, context: CallbackContext):
+    query = update.callback_query
+    if query.data == "gudbay_":
         query.message.edit_text(
             text=f"<b>Bantuan untuk modul Welcome:</b>"
             f"\n\n<b>Goodbye:</b>"
@@ -921,7 +972,33 @@ d = hari
             f"\n❍ /cleanservice (on/off): menghapus pesan layanan/tanda anggota baru yang bergabung dan keluar.",
             parse_mode=ParseMode.HTML,
             reply_markup=InlineKeyboardMarkup(
-                [[InlineKeyboardButton(text="Back", callback_data="aboutmanu_welcome")]]
+                [[InlineKeyboardButton(text="Back", callback_data="welcome_")]]
+            ),
+        )
+@run_async
+def Datang_about_callback(update: Update, context: CallbackContext):
+    query = update.callback_query
+    if query.data == "datang_":
+        query.message.edit_text(
+            text="""<b>Bantuan untuk modul Welcome:</b>
+\n*About & Markdown*
+❍Pesan Welcome/Goodbye di grup Anda dapat dipersonalisasi dalam berbagai cara. Jika Anda ingin pesan dibuat satu per satu, seperti pesan selamat datang default, Anda dapat menggunakan variabel berikut:
+ • <code>{first}</code>: ini mewakili nama depan pengguna.
+ • <code>{last}</code>: ini mewakili nama belakang pengguna. Default untuk nama depan jika pengguna tidak memiliki nama belakang.
+ • <code>{fullname}</code>: ini mewakili nama lengkap pengguna. Default untuk nama depan jika pengguna tidak memiliki nama belakang.
+ • <code>{username}</code>: ini mewakili username pengguna. Default untuk menyebutkan nama depan pengguna jika tidak memiliki username.
+ • <code>{mention}</code>: ini hanya menyebut pengguna - menandai mereka dengan nama depan mereka.
+ • <code>{id}</code>: ini mewakili id ​​pengguna.
+ • <code>{count}</code>: ini mewakili nomor anggota pengguna.
+ • <code>{chatname}</code>: ini mewakili nama grup anda.
+❍Setiap variabel HARUS diapit oleh {} untuk diganti. Pesan welcome juga mendukung *Markdown*, sehingga Anda dapat membuat elemen apa pun menjadi Bold/italic/code/link.
+❍Button juga didukung dalam hal ini, sehingga Anda dapat membuat sambutan Anda terlihat luar biasa dengan beberapa tombol intro yang bagus.
+❍Untuk membuat tombol yang menautkan ke rules Anda, gunakan ini: ``[rules](buttonurl://t.me/RosoManage_bot?start=group_id)``. Cukup ganti group_id dengan id grup Anda, yang dapat diperoleh menggunakan perintah <code>/id</code>, dan Anda siap melakukannya.
+❍Perhatikan bahwa id grup biasanya didahului dengan tanda - (min); ini wajib, jadi tolong jangan dihapus.
+❍Anda bahkan dapat mengatur gambar/gifs/video/pesan suara sebagai pesan welcome datang dengan membalas media yang diinginkan, dengan menggunakan <code>/setwelcome</code>.""",
+            parse_mode=ParseMode.HTML,
+            reply_markup=InlineKeyboardMarkup(
+                [[InlineKeyboardButton(text="Back", callback_data="welcome_")]]
             ),
         )
 

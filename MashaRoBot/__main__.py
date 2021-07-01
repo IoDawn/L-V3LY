@@ -456,13 +456,13 @@ def Basic_about_callback(update: Update, context: CallbackContext):
                 [
                     [
                         InlineKeyboardButton(text="Admin", callback_data="atmin_"),
-                        InlineKeyboardButton(text="AntiFlood", callback_data="aboutmanu_antiflood"),
-                        InlineKeyboardButton(text="Banned", callback_data="aboutmanu_banned"),
+                        InlineKeyboardButton(text="AntiFlood", callback_data="antiflood_"),
+                        InlineKeyboardButton(text="Banned", callback_data="banned_"),
                     ],
                     [
-                        InlineKeyboardButton(text="Blacklist", callback_data="aboutmanu_blacklist"),
-                        InlineKeyboardButton(text="Bl Stiker", callback_data="aboutmanu_blstiker"),   
-                        InlineKeyboardButton(text="B Teks", callback_data="aboutmanu_bteks"),
+                        InlineKeyboardButton(text="Blacklist", callback_data="blacklist_"),
+                        InlineKeyboardButton(text="Bl Stiker", callback_data="blstiker_"),   
+                        InlineKeyboardButton(text="B Teks", callback_data="bteks_"),
                     ],
                     [
                         InlineKeyboardButton(text="Delete", callback_data="aboutmanu_hapus"),
@@ -487,11 +487,11 @@ def Atmin_about_callback(update: Update, context: CallbackContext):
         query.message.edit_text(
             text="""*Bantuan untuk ️modul Admin:*
                  \n❍ /pin: reply pesan untuk disematkan, tambahkan 'loud' atau 'notify' untuk memberikan pemberitahuan kepada anggota.
-                 ❍ /unpin: melepas pin pesan yang saat ini disematkan.
-                 ❍ /invitelink: mendapat tautan grup.
-                 ❍ /promote: mempromosikan pengguna
-                 ❍ /demote: menurunkan pengguna.
-                 ❍ /title (title): menetapkan judul khusus untuk admin yang dipromosikan bot.""",
+❍ /unpin: melepas pin pesan yang saat ini disematkan.
+❍ /invitelink: mendapat tautan grup.
+❍ /promote: mempromosikan pengguna
+❍ /demote: menurunkan pengguna.
+❍ /title (title): menetapkan judul khusus untuk admin yang dipromosikan bot.""",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
@@ -512,13 +512,13 @@ def Amanage_about_callback(update: Update, context: CallbackContext):
         query.message.edit_text(
             text="""*Bantuan untuk ️modul Admin:*
                  \n*Manage:*
-                 ❍ /admincache: refresh daftar admin.
-                 ❍ /antispam (on/off): Akan mengaktifkan teknologi antispam kami atau mengembalikan pengaturan Anda saat ini.
-                 ❍ /setgtitle [title]: Mengatur judul obrolan baru di grup Anda.
-                 ❍ /setgpic: Sebagai balasan ke file atau foto untuk mengatur gambar profil grup!
-                 ❍ /delgpic: Sama seperti di atas tetapi untuk menghapus foto profil grup.
-                 ❍ /setsticker: Sebagai balasan untuk beberapa stiker untuk ditetapkan sebagai set stiker grup!
-                 ❍ /setdescription (deskripsi): Mengatur deskripsi obrolan baru di grup.""",
+❍ /admincache: refresh daftar admin.
+❍ /antispam (on/off): Akan mengaktifkan teknologi antispam kami atau mengembalikan pengaturan Anda saat ini.
+❍ /setgtitle [title]: Mengatur judul obrolan baru di grup Anda.
+❍ /setgpic: Sebagai balasan ke file atau foto untuk mengatur gambar profil grup!
+❍ /delgpic: Sama seperti di atas tetapi untuk menghapus foto profil grup.
+❍ /setsticker: Sebagai balasan untuk beberapa stiker untuk ditetapkan sebagai set stiker grup!
+❍ /setdescription (deskripsi): Mengatur deskripsi obrolan baru di grup.""",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
@@ -532,288 +532,102 @@ def Cleaner_about_callback(update: Update, context: CallbackContext):
         query.message.edit_text(
             text=f"""*Bantuan untuk ️modul Admin:*
                  \n*Cleaner:*
-                 ❍ /zombies: Temukan semua akun yang dihapus di grup Anda.
-                 ❍ /zombies clean: Hapus semua akun yang dihapus dari grup Anda.""",
+❍ /zombies: Temukan semua akun terhapus di grup Anda.
+❍ /zombies clean: Hapus semua akun yang terhapus dari grup Anda.""",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
                 [[InlineKeyboardButton(text="Back", callback_data="atmin_")]]
             ),
         )
-
-
 @run_async
-def Advanced_about_callback(update: Update, context: CallbackContext):
+def Antiflood_about_callback(update: Update, context: CallbackContext):
     query = update.callback_query
-    if query.data == "advanced_":
+    if query.data == "antiflood_":
         query.message.edit_text(
-            text="""*Advanced Commands*
-                 \n""",
+            text="""*Bantuan untuk modul AntiFlood*
+                 \n*Commands*
+❍ /flood: Dapatkan pengaturan pengendalian pesan banjir saat ini
+❍ /setflood (int/no/off'): mengaktifkan atau menonaktifkan pengendalian pesan banjir
+❍ /setfloodmode (ban/kick/mute/tban/tmute) (nilai): Tindakan yang harus dilakukan ketika pengguna telah melampaui batas pesan banjir, berupa ban/kick/mute/tmute/tban""",
             parse_mode=ParseMode.MARKDOWN,
-            disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
-                        InlineKeyboardButton(text="Approve", callback_data="aboutmanu_approve"),
-                        InlineKeyboardButton(text="Backups", callback_data="aboutmanu_backups"),
-                        InlineKeyboardButton(text="Channel", callback_data="aboutmanu_channel"),
-                    ],
-                    [
-                        InlineKeyboardButton(text="Disable", callback_data="aboutmanu_disable"),
-                        InlineKeyboardButton(text="Federasi", callback_data="aboutmanu_federasi"),
-                        InlineKeyboardButton(text="F-Subs", callback_data="aboutmanu_fsubs"),   
-                    ],
-                    [
-                        InlineKeyboardButton(text="Info", callback_data="aboutmanu_infoo"),
-                        InlineKeyboardButton(text="Koneksi", callback_data="aboutmanu_koneksi"),
-                        InlineKeyboardButton(text="Blok",callback_data="aboutmanu_blok"),
-                    ],
-                    [
-                        InlineKeyboardButton(text="Md Malam", callback_data="aboutmanu_malam"),
-                        InlineKeyboardButton(text="Poll", callback_data="aboutmanu_poll"),
-                        InlineKeyboardButton(text="Notes",callback_data="aboutmanu_notes"),
-                        InlineKeyboardButton(text="Shield",callback_data="aboutmanu_shield")
+                        InlineKeyboardButton(text="About", callback_data="flood_"),
                     ],
                     [   
-                        InlineKeyboardButton(text="🔙Kembali", callback_data="permis_")],
+                        InlineKeyboardButton(text="🔙Kembali", callback_data="basic_")],
                 ]
             ),
         )
-    elif query.data == "advanced_back":
-        query.message.edit_text(
-                PM_START_TEXT,
-                reply_markup=InlineKeyboardMarkup(buttons),
-                parse_mode=ParseMode.MARKDOWN,
-                timeout=60,
-                disable_web_page_preview=False,
-        )
-
-
 @run_async
-def Fun_about_callback(update: Update, context: CallbackContext):
+def Flood_about_callback(update: Update, context: CallbackContext):
     query = update.callback_query
-    if query.data == "fun_":
+    if query.data == "flood_":
         query.message.edit_text(
-            text="""*Fun Commands*
-                 \n""",
+            text="""*Bantuan untuk ️modul AntiFlood*
+                 \n*About:*"
+Antiflood memungkinkan Anda untuk mengambil tindakan pada pengguna yang mengirim lebih dari x pesan berturut-turut. Melebihi banjir yang ditetapkan akan mengakibatkan pembatasan pengguna itu. Ini akan membisukan pengguna jika mereka mengirim lebih dari 10 pesan berturut-turut, bot diabaikan.
+                 \n*Catatan:*
+*•* Nilai harus diisi untuk tban dan tmute!!
+Ini bisa berupa:
+5m = 5 menit
+6h = 6 jam
+3d = 3 hari
+1w = 1 minggu
+Contoh:
+❍ /setflood 5
+❍ /setfloodmode tmute 2h:
+ini akan membisukan pengguna selama 2 jam jika mengirim 5 pesan sekaligus.
+❍ /setflood off: menonaktifkan pengendalian banjir""",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
-                [
-                    [
-                        InlineKeyboardButton(text="Animasi", callback_data="aboutmanu_animasi"),
-                        InlineKeyboardButton(text="Anime", callback_data="aboutmanu_anime"),
-                    ],
-                    [
-                        InlineKeyboardButton(text="Cricket", callback_data="aboutmanu_kriket"),
-                        InlineKeyboardButton(text="Chatbot", callback_data="aboutmanu_chatbot"),   
-                        InlineKeyboardButton(text="Film", callback_data="aboutmanu_film"),
-                    ],
-                    [
-                        InlineKeyboardButton(text="Font", callback_data="aboutmanu_font"),
-                        InlineKeyboardButton(text="Logo", callback_data="aboutmanu_logo"),
-                        InlineKeyboardButton(text="Musik",callback_data="aboutmanu_musik"),
-                    ],
-                    [
-                        InlineKeyboardButton(text="Random", callback_data="aboutmanu_random"),
-                        InlineKeyboardButton(text="Stiker", callback_data="aboutmanu_stiker"),
-                        InlineKeyboardButton(text="Youtube", callback_data="aboutmanu_youtube")
-                    ],
-                    [   
-                        InlineKeyboardButton(text="🔙Kembali", callback_data="permis_")],
-                ]
+                [[InlineKeyboardButton(text="Kembali", callback_data="antiflood_")]]
             ),
         )
-    elif query.data == "fun_back":
-        query.message.edit_text(
-                PM_START_TEXT,
-                reply_markup=InlineKeyboardMarkup(buttons),
-                parse_mode=ParseMode.MARKDOWN,
-                timeout=60,
-                disable_web_page_preview=False,
-        )
-
-
 @run_async
-def Tools_about_callback(update: Update, context: CallbackContext):
+def Banned_about_callback(update: Update, context: CallbackContext):
     query = update.callback_query
-    if query.data == "tools_":
+    if query.data == "banned_":
         query.message.edit_text(
-            text="""*Tools Commands*
-                 \n""",
-            parse_mode=ParseMode.MARKDOWN,
-            disable_web_page_preview=True,
-            reply_markup=InlineKeyboardMarkup(
-                [
-                    [
-                        InlineKeyboardButton(text="Country", callback_data="aboutmanu_negara"),
-                        InlineKeyboardButton(text="Extras", callback_data="aboutmanu_ekstra"),
-                        InlineKeyboardButton(text="English", callback_data="aboutmanu_english"),
-                    ],
-                    [
-                        InlineKeyboardButton(text="Github", callback_data="aboutmanu_github"),
-                        InlineKeyboardButton(text="Google", callback_data="aboutmanu_google"),   
-                        InlineKeyboardButton(text="Gps", callback_data="aboutmanu_gps"),
-                    ],
-                    [
-                        InlineKeyboardButton(text="Grammar", callback_data="aboutmanu_grammar"),
-                        InlineKeyboardButton(text="G-Trans", callback_data="aboutmanu_gtrans"),
-                        InlineKeyboardButton(text="Json",callback_data="aboutmanu_json"),
-                    ],
-                    [
-                        InlineKeyboardButton(text="Math", callback_data="aboutmanu_math"),
-                        InlineKeyboardButton(text="Report", callback_data="aboutmanu_report"),
-                        InlineKeyboardButton(text="Secure", callback_data="aboutmanu_secure"),
-                    ],
-                    [
-                        InlineKeyboardButton(text="Time", callback_data="aboutmanu_time"),
-                        InlineKeyboardButton(text="Tts", callback_data="aboutmanu_tts"),
-                        InlineKeyboardButton(text="Weather", callback_data="aboutmanu_cuaca"),
-                        InlineKeyboardButton(text="Zipper", callback_data="aboutmanu_zipper")
-                    ],
-                    [   
-                        InlineKeyboardButton(text="🔙Kembali", callback_data="permis_")],
-                ]
-            ),
-        )
-    elif query.data == "tools_back":
-        query.message.edit_text(
-                PM_START_TEXT,
-                reply_markup=InlineKeyboardMarkup(buttons),
-                parse_mode=ParseMode.MARKDOWN,
-                timeout=60,
-                disable_web_page_preview=False,
-        )
- 
-           
-    elif query.data == "aboutmanu_admin":
-        query.message.edit_text(
-            text=f"*Bantuan untuk ️modul Admin:*"
-            f"\n\n*Admin rights:*"
-            f"\n❍ /pin: reply pesan untuk disematkan, tambahkan 'loud' atau 'notify' untuk memberikan pemberitahuan kepada anggota."
-            f"\n❍ /unpin: melepas pin pesan yang saat ini disematkan."
-            f"\n❍ /invitelink: mendapat tautan grup."
-            f"\n❍ /promote: mempromosikan pengguna"
-            f"\n❍ /demote: menurunkan pengguna."
-            f"\n❍ /title (title): menetapkan judul khusus untuk admin yang dipromosikan bot.",
-            parse_mode=ParseMode.MARKDOWN,
-            disable_web_page_preview=True,
-            reply_markup=InlineKeyboardMarkup(
-                [
-                    [
-                        InlineKeyboardButton(text="Manage", callback_data="aboutmanu_amanage"),
-                        InlineKeyboardButton(text="Cleaner", callback_data="aboutmanu_cleaner"),
-                    ],
-                    [   
-                        InlineKeyboardButton(text="🔙Kembali", callback_data="permis_back")],
-                ]
-            ),
-        )
-    elif query.data == "aboutmanu_amanage":
-        query.message.edit_text(
-            text=f"*Bantuan untuk ️modul Admin:*"
-            f"\n\n*Manage:*"
-            f"\n❍ /admincache: refresh daftar admin."
-            f"\n❍ /antispam (on/off): Akan mengaktifkan teknologi antispam kami atau mengembalikan pengaturan Anda saat ini."
-            f"\n❍ /setgtitle [new title]: Mengatur judul obrolan baru di grup Anda."
-            f"\n❍ /setgpic: Sebagai balasan ke file atau foto untuk mengatur gambar profil grup!"
-            f"\n❍ /delgpic: Sama seperti di atas tetapi untuk menghapus foto profil grup."
-            f"\n❍ /setsticker: Sebagai balasan untuk beberapa stiker untuk ditetapkan sebagai set stiker grup!"
-            f"\n❍ /setdescription (deskripsi): Mengatur deskripsi obrolan baru di grup.",
-            parse_mode=ParseMode.MARKDOWN,
-            disable_web_page_preview=True,
-            reply_markup=InlineKeyboardMarkup(
-                [[InlineKeyboardButton(text="Back", callback_data="aboutmanu_admin")]]
-            ),
-        )
-    elif query.data == "aboutmanu_cleaner":
-        query.message.edit_text(
-            text=f"*Bantuan untuk ️modul Admin:*"
-            f"\n\n*Cleaner:*"
-            f"\n❍ /zombies: Temukan semua akun yang dihapus di grup Anda."
-            f"\n❍ /zombies clean: Hapus semua akun yang dihapus dari grup Anda.",
-            parse_mode=ParseMode.MARKDOWN,
-            disable_web_page_preview=True,
-            reply_markup=InlineKeyboardMarkup(
-                [[InlineKeyboardButton(text="Back", callback_data="aboutmanu_admin")]]
-            ),
-        )
-    elif query.data == "aboutmanu_antiflood":
-        query.message.edit_text(
-            text=f"*Bantuan untuk modul AntiFlood*"
-            f"\n\n*Commands*"
-            f"\n❍ /flood: Dapatkan pengaturan pengendalian pesan banjir saat ini"
-            f"\n❍ /setflood (int/no/off'): mengaktifkan atau menonaktifkan pengendalian pesan banjir"
-            f"\n❍ /setfloodmode [ban/kick/mute/tban/tmute] [nilai]: Tindakan yang harus dilakukan ketika pengguna telah melampaui batas pesan banjir. ban/tendangan/bisu/tmute/tban",
+            text="""Bantuan untuk modul Banned:*
+                 \n*Commands:*
+❍ /punchme: meninju pengguna yang menggunakan perintah ini
+                 \n*Khusus Admin:*
+❍ /ban (userhandle): melarang pengguna.(melalui tag atau balasan)
+❍ /sban (userhandle): Diam-diam melarang pengguna. Menghapus perintah, Membalas pesan dan tidak membalas.(melalui tag atau balasan)
+❍ /tban (userhandle) x(m/h/d): melarang pengguna untuk x waktu yang ditentukan(melalui tag atau balasan).
+❍ /unban (userhandle): membatalkan pemblokiran pengguna(melalui tag atau balasan)
+❍ /punch (userhandle): Mengeluarkan pengguna dari grup(melalui tag atau reply).""",
             parse_mode=ParseMode.MARKDOWN,
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
-                        InlineKeyboardButton(text="About", callback_data="aboutmanu_flood"),
+                        InlineKeyboardButton(text="About", callback_data="larang_"),
                     ],
                     [   
-                        InlineKeyboardButton(text="🔙Kembali", callback_data="permis_back")],
+                        InlineKeyboardButton(text="🔙Kembali", callback_data="basic_")],
                 ]
             ),
         )
-    elif query.data == "aboutmanu_flood":
+@run_async
+def Larang_about_callback(update: Update, context: CallbackContext):
+    query = update.callback_query
+    if query.data == "larang_":
         query.message.edit_text(
-            text=f"*Bantuan untuk ️modul AntiFlood*"
-            f"\n\n*About:*"
-            f"\nAntiflood memungkinkan Anda untuk mengambil tindakan pada pengguna yang mengirim lebih dari x pesan berturut-turut. Melebihi banjir yang ditetapkan akan mengakibatkan pembatasan pengguna itu. Ini akan membisukan pengguna jika mereka mengirim lebih dari 10 pesan berturut-turut, bot diabaikan."
-            f"\n\n*Catatan:*"
-            f"\n • Nilai harus diisi untuk tban dan tmute!!"
-            f"\n Ini bisa berupa:"
-            f"\n 5m = 5 menit"
-            f"\n 6h = 6 jam"
-            f"\n 3d = 3 hari"
-            f"\n 1w = 1 minggu"
-            f"\n\nContoh:"
-            f"\n❍ /setflood 5"
-            f"\n /setfloodmode tmute 2h:"
-            f"\nini akan membisukan pengguna selama 2 jam jika mengirim 5 pesan sekaligus."
-            f"\n\n❍ /setflood off: menonaktifkan pengendalian banjir",
+            text="""*Bantuan untuk ️modul Banned:*
+                 \n*About:*
+m = menit
+h = jam
+d = hari
+                 \n*Contoh:*
+❍ /tban `@username` 1d: ini akan melarang `@username` selama 1 hari.""",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
-                [[InlineKeyboardButton(text="Kembali", callback_data="aboutmanu_antiflood")]]
-            ),
-        )
-    elif query.data == "aboutmanu_banned":
-        query.message.edit_text(
-            text="*Bantuan untuk moduk Banned:*"
-            f"\n\n*Commands:*"
-            f"\n❍ /punchme: meninju pengguna yang menggunakan perintah ini"
-            f"\n\n*Khusus Admin:*"
-            f"\n❍ /ban (userhandle): melarang pengguna.(melalui tag atau balasan)"
-            f"\n❍ /sban (userhandle): Diam-diam melarang pengguna. Menghapus perintah, Membalas pesan dan tidak membalas.(melalui tag atau balasan)"
-            f"\n❍ /tban (userhandle) x(m/h/d): melarang pengguna untuk x waktu yang ditentukan(melalui tag atau balasan)."
-            f"\n❍ /unban (userhandle): membatalkan pemblokiran pengguna(melalui tag atau balasan)"
-            f"\n❍ /punch (userhandle): Mengeluarkan pengguna dari grup(melalui tag atau reply).",
-            parse_mode=ParseMode.MARKDOWN,
-            reply_markup=InlineKeyboardMarkup(
-                [
-                    [
-                        InlineKeyboardButton(text="About", callback_data="aboutmanu_larang"),
-                    ],
-                    [   
-                        InlineKeyboardButton(text="🔙Kembali", callback_data="aboutmanu_permis")],
-                ]
-            ),
-        )
-    elif query.data == "aboutmanu_larang":
-        query.message.edit_text(
-            text=f"*Bantuan untuk ️modul Banned:*"
-            f"\n\n*About:*"
-            f"\nm = menit"
-            f"\nh = jam"
-            f"\nd = hari"
-            f"\n\n*Contoh:*"
-            f"\n❍ /tban `@username` 1d: ini akan melarang `@username` selama 1 hari.",
-            parse_mode=ParseMode.MARKDOWN,
-            disable_web_page_preview=True,
-            reply_markup=InlineKeyboardMarkup(
-                [[InlineKeyboardButton(text="Back", callback_data="aboutmanu_banned")]]
+                [[InlineKeyboardButton(text="Back", callback_data="banned_")]]
             ),
         )  
     elif query.data == "aboutmanu_blacklist":
@@ -1110,6 +924,152 @@ def Tools_about_callback(update: Update, context: CallbackContext):
                 [[InlineKeyboardButton(text="Back", callback_data="aboutmanu_welcome")]]
             ),
         )
+
+
+@run_async
+def Advanced_about_callback(update: Update, context: CallbackContext):
+    query = update.callback_query
+    if query.data == "advanced_":
+        query.message.edit_text(
+            text="""*Advanced Commands*
+                 \n""",
+            parse_mode=ParseMode.MARKDOWN,
+            disable_web_page_preview=True,
+            reply_markup=InlineKeyboardMarkup(
+                [
+                    [
+                        InlineKeyboardButton(text="Approve", callback_data="aboutmanu_approve"),
+                        InlineKeyboardButton(text="Backups", callback_data="aboutmanu_backups"),
+                        InlineKeyboardButton(text="Channel", callback_data="aboutmanu_channel"),
+                    ],
+                    [
+                        InlineKeyboardButton(text="Disable", callback_data="aboutmanu_disable"),
+                        InlineKeyboardButton(text="Federasi", callback_data="aboutmanu_federasi"),
+                        InlineKeyboardButton(text="F-Subs", callback_data="aboutmanu_fsubs"),   
+                    ],
+                    [
+                        InlineKeyboardButton(text="Info", callback_data="aboutmanu_infoo"),
+                        InlineKeyboardButton(text="Koneksi", callback_data="aboutmanu_koneksi"),
+                        InlineKeyboardButton(text="Blok",callback_data="aboutmanu_blok"),
+                    ],
+                    [
+                        InlineKeyboardButton(text="Md Malam", callback_data="aboutmanu_malam"),
+                        InlineKeyboardButton(text="Poll", callback_data="aboutmanu_poll"),
+                        InlineKeyboardButton(text="Notes",callback_data="aboutmanu_notes"),
+                        InlineKeyboardButton(text="Shield",callback_data="aboutmanu_shield")
+                    ],
+                    [   
+                        InlineKeyboardButton(text="🔙Kembali", callback_data="permis_")],
+                ]
+            ),
+        )
+    elif query.data == "advanced_back":
+        query.message.edit_text(
+                PM_START_TEXT,
+                reply_markup=InlineKeyboardMarkup(buttons),
+                parse_mode=ParseMode.MARKDOWN,
+                timeout=60,
+                disable_web_page_preview=False,
+        )
+
+
+@run_async
+def Fun_about_callback(update: Update, context: CallbackContext):
+    query = update.callback_query
+    if query.data == "fun_":
+        query.message.edit_text(
+            text="""*Fun Commands*
+                 \n""",
+            parse_mode=ParseMode.MARKDOWN,
+            disable_web_page_preview=True,
+            reply_markup=InlineKeyboardMarkup(
+                [
+                    [
+                        InlineKeyboardButton(text="Animasi", callback_data="aboutmanu_animasi"),
+                        InlineKeyboardButton(text="Anime", callback_data="aboutmanu_anime"),
+                    ],
+                    [
+                        InlineKeyboardButton(text="Cricket", callback_data="aboutmanu_kriket"),
+                        InlineKeyboardButton(text="Chatbot", callback_data="aboutmanu_chatbot"),   
+                        InlineKeyboardButton(text="Film", callback_data="aboutmanu_film"),
+                    ],
+                    [
+                        InlineKeyboardButton(text="Font", callback_data="aboutmanu_font"),
+                        InlineKeyboardButton(text="Logo", callback_data="aboutmanu_logo"),
+                        InlineKeyboardButton(text="Musik",callback_data="aboutmanu_musik"),
+                    ],
+                    [
+                        InlineKeyboardButton(text="Random", callback_data="aboutmanu_random"),
+                        InlineKeyboardButton(text="Stiker", callback_data="aboutmanu_stiker"),
+                        InlineKeyboardButton(text="Youtube", callback_data="aboutmanu_youtube")
+                    ],
+                    [   
+                        InlineKeyboardButton(text="🔙Kembali", callback_data="permis_")],
+                ]
+            ),
+        )
+    elif query.data == "fun_back":
+        query.message.edit_text(
+                PM_START_TEXT,
+                reply_markup=InlineKeyboardMarkup(buttons),
+                parse_mode=ParseMode.MARKDOWN,
+                timeout=60,
+                disable_web_page_preview=False,
+        )
+
+
+@run_async
+def Tools_about_callback(update: Update, context: CallbackContext):
+    query = update.callback_query
+    if query.data == "tools_":
+        query.message.edit_text(
+            text="""*Tools Commands*
+                 \n""",
+            parse_mode=ParseMode.MARKDOWN,
+            disable_web_page_preview=True,
+            reply_markup=InlineKeyboardMarkup(
+                [
+                    [
+                        InlineKeyboardButton(text="Country", callback_data="aboutmanu_negara"),
+                        InlineKeyboardButton(text="Extras", callback_data="aboutmanu_ekstra"),
+                        InlineKeyboardButton(text="English", callback_data="aboutmanu_english"),
+                    ],
+                    [
+                        InlineKeyboardButton(text="Github", callback_data="aboutmanu_github"),
+                        InlineKeyboardButton(text="Google", callback_data="aboutmanu_google"),   
+                        InlineKeyboardButton(text="Gps", callback_data="aboutmanu_gps"),
+                    ],
+                    [
+                        InlineKeyboardButton(text="Grammar", callback_data="aboutmanu_grammar"),
+                        InlineKeyboardButton(text="G-Trans", callback_data="aboutmanu_gtrans"),
+                        InlineKeyboardButton(text="Json",callback_data="aboutmanu_json"),
+                    ],
+                    [
+                        InlineKeyboardButton(text="Math", callback_data="aboutmanu_math"),
+                        InlineKeyboardButton(text="Report", callback_data="aboutmanu_report"),
+                        InlineKeyboardButton(text="Secure", callback_data="aboutmanu_secure"),
+                    ],
+                    [
+                        InlineKeyboardButton(text="Time", callback_data="aboutmanu_time"),
+                        InlineKeyboardButton(text="Tts", callback_data="aboutmanu_tts"),
+                        InlineKeyboardButton(text="Weather", callback_data="aboutmanu_cuaca"),
+                        InlineKeyboardButton(text="Zipper", callback_data="aboutmanu_zipper")
+                    ],
+                    [   
+                        InlineKeyboardButton(text="🔙Kembali", callback_data="permis_")],
+                ]
+            ),
+        )
+    elif query.data == "tools_back":
+        query.message.edit_text(
+                PM_START_TEXT,
+                reply_markup=InlineKeyboardMarkup(buttons),
+                parse_mode=ParseMode.MARKDOWN,
+                timeout=60,
+                disable_web_page_preview=False,
+        )
+ 
+
     elif query.data == "aboutmanu_approve":
         query.message.edit_text(
             text=f"*Perintah Dasar*"

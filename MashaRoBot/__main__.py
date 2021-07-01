@@ -760,7 +760,7 @@ def Filters_about_callback(update: Update, context: CallbackContext):
                 [
                     [
                         InlineKeyboardButton(text="About", callback_data="pilter_"),
-                        InlineKeyboardButton(text="Markdown", callback_data="fmark_"),
+                        InlineKeyboardButton(text="Format", callback_data="mark_"),
                     ],
                     [   
                         InlineKeyboardButton(text="🔙Kembali", callback_data="basic_")],
@@ -790,27 +790,27 @@ def Pilter_about_callback(update: Update, context: CallbackContext):
             ),
         )
 @run_async
-def Fmark_about_callback(update: Update, context: CallbackContext):
+def Mark_about_callback(update: Update, context: CallbackContext):
     query = update.callback_query
-    if query.data == "fmark_":
+    if query.data == "mark_":
         query.message.edit_text(
-            text=f"<b>Bantuan untuk modul Filters:</b>"
-            f"\n\n<b>Markdownhelp:</b>*"
-            f"\nMarkdown adalah alat pemformatan yang sangat kuat yang didukung oleh telegram."
-            f"\nRosi memiliki beberapa peningkatan, untuk memastikan bahwa pesan yang disimpan diurai dengan benar, dan juga memungkinkan Anda membuat tombol(button)."
-            f"\n\n• _italic_: membungkus teks dengan tanda _ akan menghasilkan teks miring."
-            f"\n• *bold*: membungkus teks dengan tanda * akan menghasilkan teks tebal."
-            f"\n• code: membungkus teks dengan tanda ` akan menghasilkan teks monospace, atau juga dikenal sebagai 'code'."
-            f"\n• [teks](url/link): ini akan membuat tautan - pesan hanya akan menampilkan teks, dan mengetuknya akan membuka halaman di url/link."
-            f"\n*Contoh:* [test](example.com)"
-            f"\n\n• [buttontext](buttonurl:someURL)"
-            f"\nini adalah peningkatan khusus untuk memungkinkan pengguna memiliki tombol telegram dalam Markdown mereka. Buttontext akan menjadi apa yang ditampilkan pada tombol, dan someurl akan menjadi link yang dibuka."
-            f"\n*Contoh*: [Ini adalah tombol](buttonurl:example.com)"
-            f"\n\nJika Anda ingin beberapa tombol pada baris yang sama, gunakan:(same), seperti:"
-            f"\n[satu](buttonurl://example.com)"
-            f"\n[dua](buttonurl://google.com:same)"
-            f"\nIni akan membuat dua tombol dalam satu baris, bukan satu tombol per baris."
-            f"\n\nIngatlah bahwa pesan Anda HARUS berisi beberapa teks selain hanya sebuah tombol!",
+            text="""<b>Bantuan untuk modul Filters:</b>
+                 \n<b>Markdownhelp:</b>
+Markdown adalah alat pemformatan yang sangat kuat yang didukung oleh telegram.
+Rosi memiliki beberapa peningkatan, untuk memastikan bahwa pesan yang disimpan diurai dengan benar, dan juga memungkinkan Anda membuat tombol(button).
+                 \n• _italic_: membungkus teks dengan tanda _ akan menghasilkan teks miring.
+• *bold*: membungkus teks dengan tanda * akan menghasilkan teks tebal.
+• code: membungkus teks dengan tanda ` akan menghasilkan teks monospace, atau juga dikenal sebagai 'code'.
+• [teks](url/link): ini akan membuat tautan - pesan hanya akan menampilkan teks, dan mengetuknya akan membuka halaman di url/link.
+<b>Contoh</b>: [test](example.com)
+                 \n• [buttontext](buttonurl:someURL)
+ini adalah peningkatan khusus untuk memungkinkan pengguna memiliki tombol telegram dalam Markdown mereka. Buttontext akan menjadi apa yang ditampilkan pada tombol, dan someurl akan menjadi link yang dibuka.
+<b>Contoh</b>: [Ini adalah tombol](buttonurl:example.com)"
+                 \nJika Anda ingin beberapa tombol pada baris yang sama, gunakan:(same), seperti:
+[satu](buttonurl://example.com)
+[dua](buttonurl://google.com:same)
+Ini akan membuat dua tombol dalam satu baris, bukan satu tombol per baris.
+                 \nIngatlah bahwa pesan Anda HARUS berisi beberapa teks selain hanya sebuah tombol!""",
             parse_mode=ParseMode.HTML,
             reply_markup=InlineKeyboardMarkup(
                 [[InlineKeyboardButton(text="Back", callback_data="filters_")]]
@@ -2007,9 +2007,9 @@ def main():
     hapus_callback_handler = CallbackQueryHandler(Hapus_about_callback, pattern=r"hapus_")
     filters_callback_handler = CallbackQueryHandler(Filters_about_callback, pattern=r"filters_")
     pilter_callback_handler = CallbackQueryHandler(Pilter_about_callback, pattern=r"pilter_")
-    fmark_callback_handler = CallbackQueryHandler(Fmark_callback, pattern=r"fmark_")
-    bisu_callback_handler = CallbackQueryHandler(Bisu_callback, pattern=r"bisu_")
-    muting_callback_handler = CallbackQueryHandler(Muting_callback, pattern=r"muting_")
+    mark_callback_handler = CallbackQueryHandler(Mark_about_callback, pattern=r"mark_")
+    bisu_callback_handler = CallbackQueryHandler(Bisu_about_callback, pattern=r"bisu_")
+    muting_callback_handler = CallbackQueryHandler(Muting_about_callback, pattern=r"muting_")
     rules_callback_handler = CallbackQueryHandler(Rules_about_callback, pattern=r"rules_")
     tag_callback_handler = CallbackQueryHandler(Tag_about_callback, pattern=r"tag_")
     taging_callback_handler = CallbackQueryHandler(Taging_about_callback, pattern=r"taging_")
@@ -2047,7 +2047,7 @@ def main():
     dispatcher.add_handler(hapus_callback_handler)
     dispatcher.add_handler(filters_callback_handler)
     dispatcher.add_handler(pilter_callback_handler)
-    dispatcher.add_handler(fmark_callback_handler)
+    dispatcher.add_handler(mark_callback_handler)
     dispatcher.add_handler(bisu_callback_handler)
     dispatcher.add_handler(muting_callback_handler)
     dispatcher.add_handler(rules_callback_handler)

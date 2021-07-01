@@ -1919,6 +1919,10 @@ def main():
     atmin_callback_handler = CallbackQueryHandler(Atmin_about_callback, pattern=r"atmin_")
     amanage_callback_handler = CallbackQueryHandler(Amanage_about_callback, pattern=r"amanage_")
     cleaner_callback_handler = CallbackQueryHandler(Cleaner_about_callback, pattern=r"cleaner_")
+    antiflood_callback_handler = CallbackQueryHandler(Antiflood_about_callback, pattern=r"antiflood_")
+    flood_callback_handler = CallbackQueryHandler(Flood_about_callback, pattern=r"flood_")
+    banned_callback_handler = CallbackQueryHandler(Banned_about_callback, pattern=r"banned_")
+    larang_callback_handler = CallbackQueryHandler(Larang_about_callback, pattern=r"larang_")
 
 
     donate_handler = CommandHandler("donate", donate)
@@ -1936,6 +1940,10 @@ def main():
     dispatcher.add_handler(tools_callback_handler)
     dispatcher.add_handler(atmin_callback_handler)
     dispatcher.add_handler(amanage_callback_handler)
+    dispatcher.add_handler(antiflood_callback_handler)
+    dispatcher.add_handler(flood_callback_handler)
+    dispatcher.add_handler(banned_callback_handler)
+    dispatcher.add_handler(larang_callback_handler)
     dispatcher.add_handler(cleaner_callback_handler)
     dispatcher.add_handler(settings_handler)
     dispatcher.add_handler(help_callback_handler)

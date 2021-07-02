@@ -449,7 +449,7 @@ def __stats__():
     )
 
 
-__mod_name__ = "Ban"
+__mod_name__ = "Blacklist"
 
 __help__ = """
 

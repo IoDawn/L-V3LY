@@ -17,9 +17,9 @@ EDIT_TIMES = 10
 
 
 
-#sleep how many times after each edit in 'bombs' 
+#sleep how many times after each edit in 'insta' 
 EDIT_SLEEP = 1
-#edit how many times in 'bombs' 
+#edit how many times in 'insta' 
 EDIT_TIMES = 12
 
 
@@ -134,7 +134,7 @@ hack_you = [
 
 
 
-bomb_ettu = [
+insta_gram = [
              "▪️▪️▪️▪️▪️▪️▪️▪️▪️▪️\n▪️▪️▪️▪️▪️▪️▪️▪️▪️▪️\n▪️▪️▪️▪️▪️▪️▪️▪️▪️▪️\n▪️▪️▪️▪️▪️▪️▪️▪️▪️▪️\n▪️▪️▪️▪️▪️▪️▪️▪️▪️▪️\n▪️▪️▪️▪️▪️▪️▪️▪️▪️▪️\n▪️▪️▪️▪️▪️▪️▪️▪️▪️▪️\n▪️▪️▪️▪️▪️▪️▪️▪️▪️▪️\n▪️▪️▪️▪️▪️▪️▪️▪️▪️▪️\n▪️▪️▪️▪️▪️▪️▪️▪️▪️▪️",
              "▓████▓▓▓▓▓▓▓▓▓▓▓▓\n▓████▓▓▓▓▓▓▓▓▓▓▓▓\n▓████▓▓▓▓▓▓▓▓▓▓▓▓\n▓████▓▓▓▓▓▓▓▓▓▓▓▓\n▓████▓▓▓▓▓▓▓▓▓▓▓▓\n▓████▓▓▓▓▓▓▓▓▓▓▓▓\n▓████▓▓▓▓▓▓▓▓▓▓▓▓\n▓████▓▓▓▓▓▓▓▓▓▓▓▓\n▓████▓▓▓▓▓▓▓▓▓▓▓▓\n▓████▓▓▓▓▓▓▓▓▓▓▓▓\n▓████▓▓▓▓▓▓▓▓▓▓▓▓",
              "▪️▪️▪️▪️▪️▪️▪️▪️▪️▪️\n▓████▓▓▓▓▓▓▓▓▒▒▒▓\n▓████▓▓▓▓▓▓▓▓▒▒▒▓\n▓████▓▓▓▓▓▓▓▓▒▒▒▓\n▓████▓▓▓▓▓▓▓▓▒▒▒▓\n▓████▓▓▓▓▓▓▓▓▒▒▒▓\n▓████▓▓▓▓▓▓▓▓▒▒▒▓\n▓████▓▓▓▓▓▓▓▓▒▒▒▓\n▓████▓▓▓▓▓▓▓▓▒▒▒▓\n▓████▓▓▓▓▓▓▓▓▒▒▒▓\n▓████▓▓▓▓▓▓▓▓▒▒▒▓",
@@ -292,11 +292,11 @@ def moonanimation(update: Update, context: CallbackContext):
 
 @user_admin
 @run_async
-def bombs(update: Update, context: CallbackContext):
+def insta(update: Update, context: CallbackContext):
     bot,args = context.bot, context.args
     msg = update.effective_message.reply_text('💣') 
     for x in range(EDIT_TIMES):
-        msg.edit_text(bomb_ettu[x%9])
+        msg.edit_text(insta_gram[x%12])
         time.sleep(EDIT_SLEEP)
     msg.edit_text('RIP PLOX...')
 
@@ -358,7 +358,7 @@ __help__ = """
 KILL_HANDLER = DisableAbleCommandHandler("kill",kill)
 LOVE_HANDLER = DisableAbleCommandHandler("love", love)
 HACK_HANDLER = DisableAbleCommandHandler("hack", hack)
-BOMBS_HANDLER = DisableAbleCommandHandler("bombs",bombs)
+INSTA_HANDLER = DisableAbleCommandHandler("insta",insta)
 MOONANIMATION_HANDLER =DisableAbleCommandHandler("moon",moonanimation)
 CLOCKANIMATION_HANDLER =DisableAbleCommandHandler("clock",clockanimation)
 BLOCKANIMATION_HANDLER =DisableAbleCommandHandler("block",blockanimation)
@@ -366,7 +366,7 @@ EARTHANIMATION_HANDLER =DisableAbleCommandHandler("earth",earthanimation)
 dispatcher.add_handler(KILL_HANDLER)
 dispatcher.add_handler(LOVE_HANDLER)
 dispatcher.add_handler(HACK_HANDLER)
-dispatcher.add_handler(BOMBS_HANDLER)
+dispatcher.add_handler(INSTA_HANDLER)
 dispatcher.add_handler(EARTHANIMATION_HANDLER)
 dispatcher.add_handler(MOONANIMATION_HANDLER)
 dispatcher.add_handler(CLOCKANIMATION_HANDLER)

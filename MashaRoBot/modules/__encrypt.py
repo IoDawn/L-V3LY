@@ -26,7 +26,7 @@ async def hmm(event):
     await event.reply(k)
 
 
-__mod_name__ = "Sᴇᴄᴜʀᴇ🔒"
+__mod_name__ = "Secure"
 
 __help__ = """
  ❍ /encrypt*:* Encrypts The Given Text

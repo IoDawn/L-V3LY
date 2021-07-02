@@ -628,68 +628,24 @@ def adminlist(update, context):
 
 
 __help__ = """
-@run_async
-def Atmin_about_callback(update: Update, context: CallbackContext):
-    query = update.callback_query
-    if query.data == "atmin_":
-        query.message.edit_text(
-            text=*Bantuan untuk ️modul Admin:*
-                 \n❍ /pin: reply pesan untuk disematkan, tambahkan 'loud' atau 'notify' untuk memberikan pemberitahuan kepada anggota.
-❍ /unpin: melepas pin pesan yang saat ini disematkan.
-❍ /invitelink: mendapat tautan grup.
-❍ /promote: mempromosikan pengguna
-❍ /demote: menurunkan pengguna.
-❍ /title (title): menetapkan judul khusus untuk admin yang dipromosikan bot.""",
-            reply_markup=InlineKeyboardMarkup(
-                [
-                    [
-                        InlineKeyboardButton(text="Manage", callback_data="amanage_"),
-                        InlineKeyboardButton(text="Cleaner", callback_data="cleaner_"),
-                    ],
-                    [   
-                        InlineKeyboardButton(text="🔙Kembali", callback_data="atmin_back")],
-                ]
-            ),
-        )
-    elif query.data == "atmin_back":
-        query.message.edit_text(
-                PM_START_TEXT,
-                reply_markup=InlineKeyboardMarkup(buttons),#
-                timeout=60,
-        )
+❍ /admins*:* list of admins in the chat
 
-
-@run_async
-def Amanage_about_callback(update: Update, context: CallbackContext):
-    query = update.callback_query
-    if query.data == "amanage_":
-        query.message.edit_text(
-            text=*Bantuan untuk ️modul Admin:*
-                 \n*Manage:*
-❍ /admincache: refresh daftar admin.
-❍ /antispam (on/off): Akan mengaktifkan teknologi antispam kami atau mengembalikan pengaturan Anda saat ini.
-❍ /setgtitle [title]: Mengatur judul obrolan baru di grup Anda.
-❍ /setgpic: Sebagai balasan ke file atau foto untuk mengatur gambar profil grup!
-❍ /delgpic: Sama seperti di atas tetapi untuk menghapus foto profil grup.
-❍ /setsticker: Sebagai balasan untuk beberapa stiker untuk ditetapkan sebagai set stiker grup!
-❍ /setdescription (deskripsi): Mengatur deskripsi obrolan baru di grup.
-            reply_markup=InlineKeyboardMarkup(
-                [[InlineKeyboardButton(text="Back", callback_data="atmin_")]]
-            ),
-        )
-@run_async
-def Cleaner_about_callback(update: Update, context: CallbackContext):
-    query = update.callback_query
-    if query.data == "cleaner_":
-        query.message.edit_text(
-            text=*Bantuan untuk ️modul Admin:*
-                 \n*Cleaner:*
-❍ /zombies: Temukan semua akun terhapus di grup Anda.
-❍ /zombies clean: Hapus semua akun yang terhapus dari grup Anda.
-            reply_markup=InlineKeyboardMarkup(
-                [[InlineKeyboardButton(text="Back", callback_data="atmin_")]]
-            ),
-        )
+*Admins only:*
+ ❍ /pin*:* Menyematkan pesan yang dibalas tanpa notif- tambahkan 'loud' atau 'notify' untuk memberikan notifikasi kepada anggota grup
+ ❍ /unpin*:* Melepas pin pesan yang saat ini disematkan
+ ❍ /invitelink*:* Dapatkan tautan grup
+ ❍ /promote*:* Promote user
+ ❍ /demote*:* Turunkan jabatan user
+ ❍ /title <title>*:* Menetapkan judul khusus untuk admin yang dipromosikan bot
+ ❍ /admincache*:* Refresh daftar admin
+ ❍ /antispam <on/off>*:* Akan mengaktifkan teknologi antispam kami atau melihat pengaturan Anda saat ini.
+ ❍ /setgtitle <title>*:* Menetapkan judul obrolan baru di grup Anda.
+ ❍ /setgpic*:* Balas ke file atau foto untuk mengatur foto profil grup!
+ ❍ /delgpic*:* Sama seperti di atas tetapi untuk menghapus foto profil grup.
+ ❍ /setsticker*:* Balas ke stiker untuk menjadikannya sebagai pack stiker grup!
+ ❍ /setdescription <deskripsi>*:* Tetapkan deskripsi obrolan baru di grup.
+ ❍ /zombies*:* Temukan semua akun mati di grup Anda.
+ ❍ /zombies clean*:* Hapus semua akun mati dari grup Anda.
  
 """
 
@@ -702,10 +658,6 @@ INVITE_HANDLER = DisableAbleCommandHandler("invitelink", invite)
 
 PROMOTE_HANDLER = DisableAbleCommandHandler("promote", promote)
 DEMOTE_HANDLER = DisableAbleCommandHandler("demote", demote)
-
-atmin_callback_handler = CallbackQueryHandler(Atmin_about_callback, pattern=r"atmin_")
-amanage_callback_handler = CallbackQueryHandler(Amanage_about_callback, pattern=r"amanage_")
-cleaner_callback_handler = CallbackQueryHandler(Cleaner_about_callback, pattern=r"cleaner_")
 
 SET_TITLE_HANDLER = CommandHandler("title", set_title)
 ADMIN_REFRESH_HANDLER = CommandHandler(
@@ -738,9 +690,6 @@ dispatcher.add_handler(DEL_CHAT_PIC_HANDLER)
 dispatcher.add_handler(SETCHAT_TITLE_HANDLER)
 dispatcher.add_handler(SETSTICKET_HANDLER)
 dispatcher.add_handler(SETDESC_HANDLER)
-dispatcher.add_handler(atmin_callback_handler)
-dispatcher.add_handler(amanage_callback_handler)
-dispatcher.add_handler(cleaner_callback_handler)
 
 __mod_name__ = "Admin"
 __command_list__ = [

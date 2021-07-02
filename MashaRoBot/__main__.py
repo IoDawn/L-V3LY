@@ -242,6 +242,8 @@ def start(update: Update, context: CallbackContext):
         )
 
 
+def error_handler(update, context):
+    """Log the error and send a telegram message to notify the developer."""
     # Log the error before we do anything else, so we can see it even if something breaks.
     LOGGER.error(msg="Exception while handling an update:", exc_info=context.error)
 

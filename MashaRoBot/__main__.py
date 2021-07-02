@@ -530,7 +530,7 @@ def Cleaner_about_callback(update: Update, context: CallbackContext):
     query = update.callback_query
     if query.data == "cleaner_":
         query.message.edit_text(
-            text=f"""*Bantuan untuk ️modul Admin:*
+            text="""*Bantuan untuk ️modul Admin:*
                  \n*Cleaner:*
 ❍ /zombies: Temukan semua akun terhapus di grup Anda.
 ❍ /zombies clean: Hapus semua akun yang terhapus dari grup Anda.""",
@@ -747,14 +747,14 @@ def Filters_about_callback(update: Update, context: CallbackContext):
     query = update.callback_query
     if query.data == "filters_":
         query.message.edit_text(
-            text=f"<b>Bantuan untuk modul Filters:</b>"
-            f"\n\n<b>Commands:</b>"
-            f"\n❍ /filters: Melihat daftar semua filter aktif yang disimpan dalam obrolan."
-            f"\n\n<b>Khusus Admin:</b>"
-            f"\n❍ /filter (kata kunci × reply pesan): Tambahkan filter ke obrolan ini. Bot sekarang akan membalas pesan itu setiap kali (kata kunci) disebutkan. Jika Anda membalas ke stiker dengan kata kunci, bot akan membalas dengan stiker itu."
-            f"\n❍ /stop (kata kunci): Hentikan filter itu."
-            f"\n\n<b>Khusus Owner:</b>"
-            f"\n❍ /removeallfilters: Hapus semua filter obrolan sekaligus.",
+            text="""<b>Bantuan untuk modul Filters:</b>
+                 \n<b>Commands:</b>
+❍ /filters: Melihat daftar semua filter aktif yang disimpan dalam obrolan.
+                 \n<b>Khusus Admin:</b>
+❍ /filter (kata kunci × reply pesan): Tambahkan filter ke obrolan ini. Bot sekarang akan membalas pesan itu setiap kali (kata kunci) disebutkan. Jika Anda membalas ke stiker dengan kata kunci, bot akan membalas dengan stiker itu.
+❍ /stop (kata kunci): Hentikan filter itu.
+                 \n<b>Khusus Owner:</b>
+❍ /removeallfilters: Hapus semua filter obrolan sekaligus.""",
             parse_mode=ParseMode.HTML,
             reply_markup=InlineKeyboardMarkup(
                 [
@@ -772,18 +772,18 @@ def Pilter_about_callback(update: Update, context: CallbackContext):
     query = update.callback_query
     if query.data == "pilter_":
         query.message.edit_text(
-            text=f"<b>Bantuan untuk modul Filters:</b>"
-            f"\n\n<b>About</b>"
-            f"\n- Semua kata kunci filter dalam huruf kecil. Jika Anda ingin kata kunci Anda menjadi kalimat, gunakan tanda kutip. misalnya: /filter ”hai yang disana” Bagaimana kabarmu?"
-            f"\n- Jika ingin membuat filter dengan balasan yang berbeda, gunakan %%% untuk mendapatkan balasan acak dari setiap filter yang disebutkan."
-            f"\n*Contoh:*"
-            f"\n /filter ”nama filter”"
-            f"\n kata 1"
-            f"\n %%%"
-            f"\n kata 2"
-            f"\n %%%"
-            f"\n kata 3"
-            f"\n- Filter juga mendukung pemformatan Markdown seperti: {first}, {last} dll. dan tombol. Cek Markdown untuk tahu lebih banyak!",
+            text="""<b>Bantuan untuk modul Filters:</b>"
+                 \n<b>About</b>"
+- Semua kata kunci filter dalam huruf kecil. Jika Anda ingin kata kunci Anda menjadi kalimat, gunakan tanda kutip. misalnya: /filter ”hai yang disana” Bagaimana kabarmu?
+- Jika ingin membuat filter dengan balasan yang berbeda, gunakan %%% untuk mendapatkan balasan acak dari setiap filter yang disebutkan.
+<b>Contoh:</b>
+/filter "nama filter"
+kata 1
+%%%
+kata 2
+%%%
+kata 3
+- Filter juga mendukung pemformatan Markdown seperti: {first}, {last} dll. dan tombol. Cek Markdown untuk tahu lebih banyak!""",
             parse_mode=ParseMode.HTML,
             reply_markup=InlineKeyboardMarkup(
                 [[InlineKeyboardButton(text="Back", callback_data="filters_")]]

@@ -640,8 +640,6 @@ def Atmin_about_callback(update: Update, context: CallbackContext):
 ❍ /promote: mempromosikan pengguna
 ❍ /demote: menurunkan pengguna.
 ❍ /title (title): menetapkan judul khusus untuk admin yang dipromosikan bot.""",
-            parse_mode=ParseMode.MARKDOWN,
-            disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
@@ -656,10 +654,8 @@ def Atmin_about_callback(update: Update, context: CallbackContext):
     elif query.data == "atmin_back":
         query.message.edit_text(
                 PM_START_TEXT,
-                reply_markup=InlineKeyboardMarkup(buttons),
-                parse_mode=ParseMode.MARKDOWN,
+                reply_markup=InlineKeyboardMarkup(buttons),#
                 timeout=60,
-                disable_web_page_preview=False,
         )
 
 
@@ -676,9 +672,7 @@ def Amanage_about_callback(update: Update, context: CallbackContext):
 ❍ /setgpic: Sebagai balasan ke file atau foto untuk mengatur gambar profil grup!
 ❍ /delgpic: Sama seperti di atas tetapi untuk menghapus foto profil grup.
 ❍ /setsticker: Sebagai balasan untuk beberapa stiker untuk ditetapkan sebagai set stiker grup!
-❍ /setdescription (deskripsi): Mengatur deskripsi obrolan baru di grup.""",
-            parse_mode=ParseMode.MARKDOWN,
-            disable_web_page_preview=True,
+❍ /setdescription (deskripsi): Mengatur deskripsi obrolan baru di grup.
             reply_markup=InlineKeyboardMarkup(
                 [[InlineKeyboardButton(text="Back", callback_data="atmin_")]]
             ),
@@ -688,12 +682,10 @@ def Cleaner_about_callback(update: Update, context: CallbackContext):
     query = update.callback_query
     if query.data == "cleaner_":
         query.message.edit_text(
-            text=f"""*Bantuan untuk ️modul Admin:*
+            text=*Bantuan untuk ️modul Admin:*
                  \n*Cleaner:*
 ❍ /zombies: Temukan semua akun terhapus di grup Anda.
-❍ /zombies clean: Hapus semua akun yang terhapus dari grup Anda.""",
-            parse_mode=ParseMode.MARKDOWN,
-            disable_web_page_preview=True,
+❍ /zombies clean: Hapus semua akun yang terhapus dari grup Anda.
             reply_markup=InlineKeyboardMarkup(
                 [[InlineKeyboardButton(text="Back", callback_data="atmin_")]]
             ),

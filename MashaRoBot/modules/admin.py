@@ -633,7 +633,7 @@ def Atmin_about_callback(update: Update, context: CallbackContext):
     query = update.callback_query
     if query.data == "atmin_":
         query.message.edit_text(
-            text="""*Bantuan untuk ️modul Admin:*
+            text=*Bantuan untuk ️modul Admin:*
                  \n❍ /pin: reply pesan untuk disematkan, tambahkan 'loud' atau 'notify' untuk memberikan pemberitahuan kepada anggota.
 ❍ /unpin: melepas pin pesan yang saat ini disematkan.
 ❍ /invitelink: mendapat tautan grup.
@@ -668,7 +668,7 @@ def Amanage_about_callback(update: Update, context: CallbackContext):
     query = update.callback_query
     if query.data == "amanage_":
         query.message.edit_text(
-            text="""*Bantuan untuk ️modul Admin:*
+            text=*Bantuan untuk ️modul Admin:*
                  \n*Manage:*
 ❍ /admincache: refresh daftar admin.
 ❍ /antispam (on/off): Akan mengaktifkan teknologi antispam kami atau mengembalikan pengaturan Anda saat ini.

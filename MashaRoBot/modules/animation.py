@@ -17,10 +17,10 @@ EDIT_TIMES = 10
 
 
 
-#sleep how many times after each edit in 'bombs' 
+#sleep how many times after each edit in 'insta' 
 EDIT_SLEEP = 1
-#edit how many times in 'bombs' 
-EDIT_TIMES = 9
+#edit how many times in 'insta' 
+EDIT_TIMES = 8
 
 
 
@@ -123,7 +123,7 @@ love_siren = [
 
 
 hack_you = [
-            "Looking for WhatsApp databases in targeted person...",
+            "Looking for Telegram databases in targeted person...",
             " User online: True\nTelegram access: True\nRead Storage: True ",
             "Hacking... 20.63%\n[███░░░░░░░░░░░░░░░░░]",    
             "Hacking... 86.21%\n[███████████████░░░░░]",
@@ -134,16 +134,17 @@ hack_you = [
 
 
 
-bomb_ettu = [
-             "▪️▪️▪️▪️\n▪️▪️▪️▪️\n▪️▪️▪️▪️\n▪️▪️▪️▪️\n▪️▪️▪️▪️",
-             "💣💣💣💣\n▪️▪️▪️▪️\n▪️▪️▪️▪️\n▪️▪️▪️▪️\n▪️▪️▪️▪️", 
-             "▪️▪️▪️▪️\n💣💣💣💣\n▪️▪️▪️▪️\n▪️▪️▪️▪️\n▪️▪️▪️▪️",
-             "▪️▪️▪️▪️\n▪️▪️▪️▪️\n💣💣💣💣\n▪️▪️▪️▪️\n▪️▪️▪️▪️",
-             "▪️▪️▪️▪️\n▪️▪️▪️▪️\n▪️▪️▪️▪️\n💣💣💣💣\n▪️▪️▪️▪️",
-             "▪️▪️▪️▪️\n▪️▪️▪️▪️\n▪️▪️▪️▪️\n▪️▪️▪️▪️\n💣💣💣💣",
-             "▪️▪️▪️▪️\n▪️▪️▪️▪️\n▪️▪️▪️▪️\n▪️▪️▪️▪️\n💥💥💥💥",
-             "▪️▪️▪️▪️\n▪️▪️▪️▪️\n▪️▪️▪️▪️\n💥💥💥💥\n💥💥💥💥",
-             "▪️▪️▪️▪️\n▪️▪️▪️▪️\n▪️▪️▪️▪️\n▪️▪️▪️▪️\n😵😵😵😵",
+insta_gram = [
+             "▓████▓▓▓▓▓▓▓▓▓▓▓▓",
+             "\n▓████▓▓▓▓▓▓▓▓▒▒▒▓", 
+             "\n▓████▓▓▓▓▓▓▓▓▒▒▒▓",
+             "\n▓▓▓▓▓▒▒▒▒▒▒▒▓▓▓▓▓",
+             "\n███▒▒▒▒▒▒▒▒▒████",
+             "\n████▒▒▒▒▒▒▒▒▒████",
+             "\n████▒▒▒▒▒▒▒▒▒████",
+             "\n████▒▒▒▒▒▒▒█████",
+             "\n█████████████████",
+             "\n█████████████████",
 ]
 
 
@@ -289,13 +290,13 @@ def moonanimation(update: Update, context: CallbackContext):
 
 @user_admin
 @run_async
-def bombs(update: Update, context: CallbackContext):
+def insta(update: Update, context: CallbackContext):
     bot,args = context.bot, context.args
-    msg = update.effective_message.reply_text('💣') 
+    msg = update.effective_message.reply_text('📮') 
     for x in range(EDIT_TIMES):
-        msg.edit_text(bomb_ettu[x%9])
+        msg.edit_text(insta_gram[x%9])
         time.sleep(EDIT_SLEEP)
-    msg.edit_text('RIP PLOX...')
+    msg.edit_text('Instagram.com/fajarj_26')
 
 
 
@@ -350,12 +351,13 @@ def kill(update: Update, context: CallbackContext):
 __help__ = """
 - /love ❣️
 - /hack 👨‍💻
-- /bombs 💣
+- /insta 📮
+- /kill 🏹
 """
 KILL_HANDLER = DisableAbleCommandHandler("kill",kill)
 LOVE_HANDLER = DisableAbleCommandHandler("love", love)
 HACK_HANDLER = DisableAbleCommandHandler("hack", hack)
-BOMBS_HANDLER = DisableAbleCommandHandler("bombs",bombs)
+INSTA_HANDLER = DisableAbleCommandHandler("insta",insta)
 MOONANIMATION_HANDLER =DisableAbleCommandHandler("moon",moonanimation)
 CLOCKANIMATION_HANDLER =DisableAbleCommandHandler("clock",clockanimation)
 BLOCKANIMATION_HANDLER =DisableAbleCommandHandler("block",blockanimation)
@@ -363,10 +365,10 @@ EARTHANIMATION_HANDLER =DisableAbleCommandHandler("earth",earthanimation)
 dispatcher.add_handler(KILL_HANDLER)
 dispatcher.add_handler(LOVE_HANDLER)
 dispatcher.add_handler(HACK_HANDLER)
-dispatcher.add_handler(BOMBS_HANDLER)
+dispatcher.add_handler(INSTA_HANDLER)
 dispatcher.add_handler(EARTHANIMATION_HANDLER)
 dispatcher.add_handler(MOONANIMATION_HANDLER)
 dispatcher.add_handler(CLOCKANIMATION_HANDLER)
 dispatcher.add_handler(BLOCKANIMATION_HANDLER)
 
-__mod_name__ = "ᴀɴɪᴍᴀᴛɪᴏɴs✨"
+__mod_name__ = "Animation"

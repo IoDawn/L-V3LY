@@ -379,7 +379,7 @@ def Masha_about_callback(update: Update, context: CallbackContext):
 
 
 @run_async
-def DaisyX_about_callback(update, context):
+def Aboutmanu_about_callback(update, context):
     query = update.callback_query
     if query.data == "aboutmanu_":
         query.message.edit_text(
@@ -904,8 +904,7 @@ def main():
 
     about_callback_handler = CallbackQueryHandler(Masha_about_callback, pattern=r"masha_")
     source_callback_handler = CallbackQueryHandler(Source_about_callback, pattern=r"source_")
-        DaisyX_about_callback, pattern=r"aboutmanu_"
-    )
+    aboutmanu_callback_handler = CallbackQueryHandler(Aboutmanu_about_callback, pattern=r"aboutmanu_")
 
     donate_handler = CommandHandler("donate", donate)
     migrate_handler = MessageHandler(Filters.status_update.migrate, migrate_chats)
@@ -915,6 +914,7 @@ def main():
     dispatcher.add_handler(help_handler)
     dispatcher.add_handler(about_callback_handler)
     dispatcher.add_handler(source_callback_handler)
+    dispatcher.add_handler(aboutmanu_callback_handler)
     dispatcher.add_handler(settings_handler)
     dispatcher.add_handler(help_callback_handler)
     dispatcher.add_handler(settings_callback_handler)

@@ -33,11 +33,44 @@ openhehe = ChatBannedRights(
     pin_messages=True,
     change_info=True,
 )
+from telethon.tl.types import (
+    ChannelParticipantsAdmins,
+    ChatAdminRights,
+    MessageEntityMentionName,
+    MessageMediaPhoto,
+)
+from telethon.tl.functions.channels import (
+    EditAdminRequest,
+    EditBannedRequest,
+    EditPhotoRequest,
+)
 
+async def is_register_admin(chat, user):
+    if isinstance(chat, (types.InputPeerChannel, types.InputChannel)):
+        return isinstance(
+            (
+                await telethn(functions.channels.GetParticipantRequest(chat, user))
+            ).participant,
+            (types.ChannelParticipantAdmin, types.ChannelParticipantCreator),
+        )
+    if isinstance(chat, types.InputPeerUser):
+        return True
 
-@tbot.on(events.NewMessage(pattern="/nightmode (.*)"))
-async def close_ws(event):
+async def can_change_info(message):
+    result = await tbot(
+        functions.channels.GetParticipantRequest(
+            channel=message.chat_id,
+            user_id=message.sender_id,
+        )
+    )
+    p = result.participant
+    return isinstance(p, types.ChannelParticipantCreator) or (
+        isinstance(p, types.ChannelParticipantAdmin) and p.admin_rights.change_info
+    )
 
+@register(pattern="^/(nightmode|Nightmode|NightMode) ?(.*)")
+async def profanity(event):
+    
     if not event.is_group:
         await event.reply("Anda Hanya Dapat Menonton Nsfw di Grup.")
         return
@@ -134,7 +167,6 @@ scheduler = AsyncIOScheduler(timezone="Asia/Jakarta")
 scheduler.add_job(job_open, trigger="cron", hour=6, minute=10)
 scheduler.start()
 
-__mod_name__ = "Night 🌒"
 
 __help__ = """
 <b> Mode Malam </b>
@@ -144,3 +176,4 @@ Tutup grup Anda pada pukul 12.00 dan buka kembali pada pukul 6.00(WIB)
 - /nightmode [ON/OFF]: Aktifkan/Nonaktifkan Mode Malam.
 
 """
+__mod_name__ = "Night 🌒"

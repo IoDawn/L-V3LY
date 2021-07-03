@@ -27,6 +27,7 @@ from MashaRoBot import (
 # NOTE: Module order is not guaranteed, specify that in the config file!
 from MashaRoBot.modules import ALL_MODULES
 from MashaRoBot.modules.helper_funcs.chat_status import is_user_admin
+from MashaRoBot.modules.helper_funcs.chat_status import user_admin
 from MashaRoBot.modules.helper_funcs.misc import paginate_modules
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, ParseMode, Update
 from telegram.error import (
@@ -303,9 +304,14 @@ def help_button(update, context):
                 parse_mode=ParseMode.MARKDOWN,
                 disable_web_page_preview=True,
                 reply_markup=InlineKeyboardMarkup(
-                    [[InlineKeyboardButton(text="「 GO BACK 」", callback_data="help_back")]]
-                ),
-            )
+                  [
+                   [
+                      InlineKeyboardButton(text="Help-Back", callback_data="help_back")
+                      InlineKeyboardButton(text="Group-Menu", callback_data="helpgrup_")
+                   ]
+                  ]
+              ),
+          )
 
         elif prev_match:
             curr_page = int(prev_match.group(1))
@@ -434,15 +440,10 @@ def Aboutmanu_about_callback(update, context):
         )
 
 @run_async
+@user_admin
 def helpgrup_about_callback(update, context):
-    chat = update.effective_chat
-    user = update.effective_user
-    member = chat.get_member(user.id)
-    if member.status != "creator" and "administrator" and user.id not in DRAGONS:
-        update.effective_message.reply_text(
-            "You need to be admin to do this!"
-        )
-    else:
+    query = update.callback_query
+    if query.data == "helpgrup_":
         query.message.edit_text(
             text=f"*Pengaturan Grup*"
             f"\n\n_Pilih salah satu pengaturan yang ingin anda ubah._",
@@ -491,15 +492,10 @@ def helpgrup_about_callback(update, context):
 
 
 @run_async
+@user_admin
 def nextgrup_about_callback(update, context):
-    chat = update.effective_chat
-    user = update.effective_user
-    member = chat.get_member(user.id)
-    if member.status != "creator" and user.id not in DRAGONS:
-        update.effective_message.reply_text(
-            "You need to be admin to do this!"
-        )
-    else:
+    query = update.callback_query
+    if query.data == "nextgrup_":
         query.message.edit_text(
             text=f"*Pengaturan Grup*"
             f"\n\n_Pilih salah satu pengaturan yang ingin anda ubah._",
@@ -541,6 +537,7 @@ def nextgrup_about_callback(update, context):
 
 
 @run_async
+@user_admin
 def Tutup_about_callback(update: Update, context: CallbackContext):
     query = update.callback_query
     if query.data == "tutup_":
@@ -550,7 +547,7 @@ def Tutup_about_callback(update: Update, context: CallbackContext):
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
-                [[InlineKeyboardButton(text="Buka", callback_data="aboutmanu_helpgrup")]]
+                [[InlineKeyboardButton(text="Buka", callback_data="helpgrup_")]]
             ),
         )
 

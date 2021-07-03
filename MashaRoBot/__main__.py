@@ -440,7 +440,6 @@ def Aboutmanu_about_callback(update, context):
 
 @run_async
 @user_admin
-@pbot.on_callback_query
 def helpgrup_about_callback(update, context):
     query = update.callback_query
     if query.data == "helpgrup_":

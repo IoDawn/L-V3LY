@@ -484,7 +484,7 @@ def helpgrup_about_callback(update, context):
                     [
                         InlineKeyboardButton(text="📚All Cmd", callback_data="help_back"),
                         InlineKeyboardButton(text="🔒Close", callback_data="tutup_"),
-                        InlineKeyboardButton(text="▶️Other", callback_data="aboutmanu_nextgrup")],
+                        InlineKeyboardButton(text="▶️Other", callback_data="nextgrup_")],
                 ]
             ),
         )
@@ -850,7 +850,7 @@ def main():
     about_callback_handler = CallbackQueryHandler(Masha_about_callback, pattern=r"masha_")
     aboutmanu_callback_handler = CallbackQueryHandler(Aboutmanu_about_callback, pattern=r"aboutmanu_")
     helpgrup_callback_handler = CallbackQueryHandler(helpgrup_about_callback, pattern=r"helpgrup_")
-    nextgrup_callback_handler = CallbackQueryHandler(nextgrup_about_callback)
+    nextgrup_callback_handler = CallbackQueryHandler(nextgrup_about_callback, pattern=r"nextgrup_")
     tutup_callback_handler = CallbackQueryHandler(Tutup_about_callback, pattern=r"tutup_")
 
     donate_handler = CommandHandler("donate", donate)
@@ -862,7 +862,7 @@ def main():
     dispatcher.add_handler(about_callback_handler)
     dispatcher.add_handler(aboutmanu_callback_handler)
     dispatcher.add_handler(helpgrup_callback_handler)
-    dispatcher.add_handler(next_callback_handler)
+    dispatcher.add_handler(nextgrup_callback_handler)
     dispatcher.add_handler(tutup_callback_handler)
     dispatcher.add_handler(settings_handler)
     dispatcher.add_handler(help_callback_handler)

@@ -489,14 +489,13 @@ def helpgrup_about_callback(update, context):
             ),
         )
     elif query.data == "helpgrup_":
-         client.answer_callback_query(
-             text="only admin can use this!",
-             show_alert=True,
-         )
+        if member.status == "member":
+            query.answer("You need to be admin to do this.")
+            show_alert=True,
 
 
 @run_async
-@user_admin
+@pbot.on_callback_query
 def nextgrup_about_callback(update, context):
     query = update.callback_query
     if query.data == "nextgrup_":
@@ -538,6 +537,12 @@ def nextgrup_about_callback(update, context):
                 ]
             ),
         )
+    elif query.data == "helpgrup_":
+         client.answer_callback_query(
+             cb.id,
+             text="only admins can use this!.",
+             show_alert=True,
+         )
 
 
 @run_async

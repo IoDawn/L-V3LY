@@ -9,12 +9,12 @@
 
 from pyrogram import filters
 
-from MashaRobot.function.pluginhelpers import admins_only, get_text
+from MashaRobot.function.pluginhelpers import user_admin, get_text
 from MashaRoBot import pbot
 
 
 @pbot.on_message(filters.command("tagall") & ~filters.edited & ~filters.bot)
-@admins_only
+@user_admin
 async def tagall(client, message):
     await message.reply("`Processing.....`")
     sh = get_text(message)

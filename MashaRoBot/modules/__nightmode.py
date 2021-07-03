@@ -134,7 +134,7 @@ async def job_close():
             logger.info(f"Unable To Close Group {chat} - {e}")
 
 #Run everyday at 12am
-scheduler = AsyncIOScheduler(timezone="Asia/Kolkata")
+scheduler = AsyncIOScheduler(timezone="Asia/Jakarta")
 scheduler.add_job(job_close, trigger="cron", hour=23, minute=59)
 scheduler.start()
 
@@ -156,7 +156,7 @@ async def job_open():
             logger.info(f"Unable To Open Group {pro.chat_id} - {e}")
 
 # Run everyday at 06
-scheduler = AsyncIOScheduler(timezone="Asia/Kolkata")
+scheduler = AsyncIOScheduler(timezone="Asia/Jakarta")
 scheduler.add_job(job_open, trigger="cron", hour=5, minute=58)
 scheduler.start()
 
@@ -167,7 +167,7 @@ file_helpo = file_help.replace("_", " ")
 __help__ = """
  - /nightmode on/off
 
-**Note:** Night Mode chats get Automatically closed at 12pm(IST)
-and Automatically openned at 6am(IST) To Prevent Night Spams.
+**Note:** Night Mode chats get Automatically closed at 12pm(WIB)
+and Automatically openned at 6am(WIB) To Prevent Night Spams.
 """
 __mod_name__ = "Night"

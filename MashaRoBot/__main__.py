@@ -449,7 +449,7 @@ def aboutmanu_helpgrup(update, context):
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
-                [    
+                [
                     [
                         InlineKeyboardButton(text="🔇 Muting", callback_data="aboutmanu_mute"),
                         InlineKeyboardButton(text="🚫 Blocked ", callback_data="aboutmanu_blok"),

@@ -9,7 +9,7 @@
 
 from pyrogram import filters
 
-from MashaRobot.function.pluginhelpers import user_admin, get_text
+from MashaRoBot.modules.helper_funcs.chat_status import user_admin
 from MashaRoBot import pbot
 
 

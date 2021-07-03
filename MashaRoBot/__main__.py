@@ -434,9 +434,7 @@ def Aboutmanu_about_callback(update, context):
         )
 
 @run_async
-def Helpgrup_about_callback(update, context):
-    query = update.callback_query
-    if query.data == "helpgrup_":
+def helpgrup_about_callback(update, context):
     chat = update.effective_chat
     user = update.effective_user
     member = chat.get_member(user.id)
@@ -851,8 +849,8 @@ def main():
 
     about_callback_handler = CallbackQueryHandler(Masha_about_callback, pattern=r"masha_")
     aboutmanu_callback_handler = CallbackQueryHandler(Aboutmanu_about_callback, pattern=r"aboutmanu_")
-    helpgrup_callback_handler = CallbackQueryHandler(Helpgrup_about_callback, pattern=r"helpgrup_")
-    nextgrup_callback_handler = CallbackQueryHandler(nextgrup_about_callback, pattern=r"nextgrup_")
+    helpgrup_callback_handler = CallbackQueryHandler(helpgrup_about_callback, pattern=r"helpgrup_")
+    nextgrup_callback_handler = CallbackQueryHandler(nextgrup_about_callback)
     tutup_callback_handler = CallbackQueryHandler(Tutup_about_callback, pattern=r"tutup_")
 
     donate_handler = CommandHandler("donate", donate)

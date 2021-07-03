@@ -7,7 +7,7 @@
 # All rights reserved.
 
 
-from pyrogram import filters
+from telegram.ext import filters
 
 from MashaRoBot.modules.helper_funcs.chat_status import user_admin
 from MashaRoBot import pbot

@@ -491,7 +491,7 @@ def helpgrup_about_callback(update, context):
 
 
 @run_async
-def nextgrup_(update, context):
+def nextgrup_about_callback(update, context):
     chat = update.effective_chat
     user = update.effective_user
     member = chat.get_member(user.id)
@@ -500,7 +500,6 @@ def nextgrup_(update, context):
             "You need to be admin to do this!"
         )
     else:
-    elif query.data == "aboutmanu_nextgrup":
         query.message.edit_text(
             text=f"*Pengaturan Grup*"
             f"\n\n_Pilih salah satu pengaturan yang ingin anda ubah._",
@@ -762,7 +761,7 @@ def get_settings(update: Update, context: CallbackContext):
                             )
                         ],
                         [   
-                            InlineKeyboardButton(text="👥 Buka Disini",callback_data="aboutmanu_helpgrup")],   
+                            InlineKeyboardButton(text="👥 Buka Disini",callback_data="helpgrup_")],   
                     ]
                 ),
             )
@@ -831,7 +830,7 @@ def main():
 
     if SUPPORT_CHAT is not None and isinstance(SUPPORT_CHAT, str):
         try:
-            dispatcher.bot.sendMessage(f"@{SUPPORT_CHAT}", "Lovely is back with explosive features.✨")
+            dispatcher.bot.sendMessage(f"@{SUPPORT_CHAT}", "Rosi is back with explosive features.✨")
         except Unauthorized:
             LOGGER.warning(
                 "Bot isnt able to send message to support_chat, go and check!"
@@ -851,6 +850,7 @@ def main():
     about_callback_handler = CallbackQueryHandler(Masha_about_callback, pattern=r"masha_")
     aboutmanu_callback_handler = CallbackQueryHandler(Aboutmanu_about_callback, pattern=r"aboutmanu_")
     helpgrup_callback_handler = CallbackQueryHandler(Helpgrup_about_callback, pattern=r"helpgrup_")
+    nextgrup_callback_handler = CallbackQueryHandler(Nextgrup_about_callback, pattern=r"nextgrup_")
     tutup_callback_handler = CallbackQueryHandler(Tutup_about_callback, pattern=r"tutup_")
 
     donate_handler = CommandHandler("donate", donate)
@@ -862,6 +862,7 @@ def main():
     dispatcher.add_handler(about_callback_handler)
     dispatcher.add_handler(aboutmanu_callback_handler)
     dispatcher.add_handler(helpgrup_callback_handler)
+    dispatcher.add_handler(next_callback_handler)
     dispatcher.add_handler(tutup_callback_handler)
     dispatcher.add_handler(settings_handler)
     dispatcher.add_handler(help_callback_handler)

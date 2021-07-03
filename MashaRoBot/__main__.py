@@ -307,7 +307,7 @@ def help_button(update, context):
                   [
                    [
                       InlineKeyboardButton(text="Help-Back", callback_data="help_back")
-                      InlineKeyboardButton(text="Group-Menu", callback_data="helpgrup_")
+                      InlineKeyboardButton(text="Group-Menu", callback_data="helpgrup_")],
                    ]
                   ]
               ),

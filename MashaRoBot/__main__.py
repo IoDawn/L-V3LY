@@ -432,14 +432,24 @@ def Aboutmanu_about_callback(update, context):
                 ]
             ),
         )
-    elif query.data == "aboutmanu_helpgrup":
+
+@run_async
+def aboutmanu_helpgrup(update, context):
+    chat = update.effective_chat
+    user = update.effective_user
+    member = chat.get_member(user.id)
+    if member.status != "creator" and "administrator" and user.id not in DRAGONS:
+        update.effective_message.reply_text(
+            "You need to be admin to do this!"
+        )
+    else:
         query.message.edit_text(
             text=f"*Pengaturan Grup*"
             f"\n\n_Pilih salah satu pengaturan yang ingin anda ubah._",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
-                [
+                [    
                     [
                         InlineKeyboardButton(text="🔇 Muting", callback_data="aboutmanu_mute"),
                         InlineKeyboardButton(text="🚫 Blocked ", callback_data="aboutmanu_blok"),

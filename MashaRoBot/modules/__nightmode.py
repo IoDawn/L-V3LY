@@ -33,141 +33,114 @@ openhehe = ChatBannedRights(
     pin_messages=True,
     change_info=True,
 )
-from telethon.tl.types import (
-    ChannelParticipantsAdmins,
-    ChatAdminRights,
-    MessageEntityMentionName,
-    MessageMediaPhoto,
-)
-from telethon.tl.functions.channels import (
-    EditAdminRequest,
-    EditBannedRequest,
-    EditPhotoRequest,
-)
 
-async def is_register_admin(chat, user):
-    if isinstance(chat, (types.InputPeerChannel, types.InputChannel)):
-        return isinstance(
-            (
-                await telethn(functions.channels.GetParticipantRequest(chat, user))
-            ).participant,
-            (types.ChannelParticipantAdmin, types.ChannelParticipantCreator),
-        )
-    if isinstance(chat, types.InputPeerUser):
-        return True
 
-async def can_change_info(message):
-    result = await tbot(
-        functions.channels.GetParticipantRequest(
-            channel=message.chat_id,
-            user_id=message.sender_id,
-        )
-    )
-    p = result.participant
-    return isinstance(p, types.ChannelParticipantCreator) or (
-        isinstance(p, types.ChannelParticipantAdmin) and p.admin_rights.change_info
-    )
+@tbot.on(events.NewMessage(pattern="/nightmode (.*)"))
+async def close_ws(event):
 
-@register(pattern="^/(nightmode|Nightmode|NightMode) ?(.*)")
-async def profanity(event):
-    if event.fwd_from:
+    if not event.is_group:
+        await event.reply("Anda Hanya Dapat Menonton Nsfw di Grup.")
         return
-    if event.is_private:
+    input_str = event.pattern_match.group(1)
+    if not await is_admin(event, BOT_ID):
+        await event.reply("`Saya Harus Menjadi Admin Untuk Melakukan Ini!`")
         return
-    input = event.pattern_match.group(2)
-    if not event.sender_id == OWNER_ID:
-        if not await is_register_admin(event.input_chat, event.sender_id):
-           await event.reply("Only admins can execute this command!")
-           return
-        else:
-          if not await can_change_info(message=dmod):
-            await event.reply("You are missing the following rights to use this command:CanChangeinfo")
-            return
-    if not input:
-        if is_nightmode_indb(str(event.chat_id)):
-                await event.reply(
-                    "Currently NightMode is Enabled for this Chat"
-                )
-                return
-        await event.reply(
-            "Currently NightMode is Disabled for this Chat"
-        )
-        return
-    if "on" in input:
-        if event.is_group:
+    if await is_admin(event, event.message.sender_id):
+        if (
+            input_str == "on"
+            or input_str == "On"
+            or input_str == "ON"
+            or input_str == "enable"
+        ):
             if is_nightmode_indb(str(event.chat_id)):
-                    await event.reply(
-                        "Night Mode is Already Turned ON for this Chat"
-                    )
-                    return
+                await event.reply("Obrolan Ini Sudah Diaktifkan Mode Malam.")
+                return
             add_nightmode(str(event.chat_id))
-            await event.reply("NightMode turned on for this chat.")
-    if "off" in input:
-        if event.is_group:
+            await event.reply(
+                f"**Menambahkan Obrolan {event.chat.title} dan Id {event.chat_id} ke dalam database. Grup Ini Akan Ditutup Pada Pukul 12 Malam(WIB) Dan Akan Dibuka Kembali Pada Pukul 06 Pagi(WIB)**"
+            )
+        elif (
+            input_str == "off"
+            or input_str == "Off"
+            or input_str == "OFF"
+            or input_str == "disable"
+        ):
+
             if not is_nightmode_indb(str(event.chat_id)):
-                    await event.reply(
-                        "Night Mode is Already Off for this Chat"
-                    )
-                    return
-        rmnightmode(str(event.chat_id))
-        await event.reply("NightMode Disabled!")
-    if not "off" in input and not "on" in input:
-        await event.reply("Please Specify On or Off!")
+                await event.reply("Obrolan Ini Belum Mengaktifkan Mode Malam.")
+                return
+            rmnightmode(str(event.chat_id))
+            await event.reply(
+                f"**Menghapus obrolan {event.chat.title} dan id {event.chat_id} dari database. Grup Ini Tidak Akan Ditutup Lagi Pada Pukul 12 Malam(WIB) Dan Seterusnya**"
+            )
+        else:
+            await event.reply("Saya hanya mengerti `/nightmode on` dan `/nightmode off`")
+    else:
+        await event.reply("`Anda Harus Menjadi Admin Untuk Melakukan Ini!`")
         return
 
 
 async def job_close():
-    chats = get_all_chat_id()
-    if len(chats) == 0:
+    ws_chats = get_all_chat_id()
+    if len(ws_chats) == 0:
         return
-    for pro in chats:
+    for warner in ws_chats:
         try:
-            await telethn.send_message(
-              int(pro.chat_id), "12:00 Am, Group Is Closing Till 6 Am. Night Mode Started ! \n**Powered By Evlie**"
+            await tbot.send_message(
+                int(warner.chat_id),
+                "`Sudah jam 12:00 Malam, Grup Ditutup Sampai Jam 6 Pagi. Mode Malam Dimulai!` \n**Didukung oleh @admin**",
             )
-            await telethn(
-            functions.messages.EditChatDefaultBannedRightsRequest(
-                peer=int(pro.chat_id), banned_rights=hehes
+            await tbot(
+                functions.messages.EditChatDefaultBannedRightsRequest(
+                    peer=int(warner.chat_id), banned_rights=hehes
+                )
             )
-            )
+            if CLEAN_GROUPS:
+                async for user in tbot.iter_participants(int(warner.chat_id)):
+                    if user.deleted:
+                        await tbot.edit_permissions(
+                            int(warner.chat_id), user.id, view_messages=False
+                        )
         except Exception as e:
-            logger.info(f"Unable To Close Group {chat} - {e}")
+            print(f"Tidak Dapat Menutup Grup {warner} - {e}")
 
-#Run everyday at 12am
+
 scheduler = AsyncIOScheduler(timezone="Asia/Jakarta")
-scheduler.add_job(job_close, trigger="cron", hour=23, minute=59)
+scheduler.add_job(job_close, trigger="cron", hour=23, minute=55)
 scheduler.start()
 
+
 async def job_open():
-    chats = get_all_chat_id()
-    if len(chats) == 0:
+    ws_chats = get_all_chat_id()
+    if len(ws_chats) == 0:
         return
-    for pro in chats:
+    for warner in ws_chats:
         try:
-            await telethn.send_message(
-              int(pro.chat_id), "06:00 Am, Group Is Opening.\n**Powered By Evlie**"
+            await tbot.send_message(
+                int(warner.chat_id),
+                "`Jam 06:00 pagi, Grup kembali Dibuka.`\n**Didukung oleh @admin**",
             )
-            await telethn(
-            functions.messages.EditChatDefaultBannedRightsRequest(
-                peer=int(pro.chat_id), banned_rights=openhehe
+            await tbot(
+                functions.messages.EditChatDefaultBannedRightsRequest(
+                    peer=int(warner.chat_id), banned_rights=openhehe
+                )
             )
-        )
         except Exception as e:
-            logger.info(f"Unable To Open Group {pro.chat_id} - {e}")
+            print(f"Tidak Dapat Membuka Grup {warner.chat_id} - {e}")
+
 
 # Run everyday at 06
 scheduler = AsyncIOScheduler(timezone="Asia/Jakarta")
-scheduler.add_job(job_open, trigger="cron", hour=5, minute=58)
+scheduler.add_job(job_open, trigger="cron", hour=6, minute=10)
 scheduler.start()
 
-file_help = os.path.basename(__file__)
-file_help = file_help.replace(".py", "")
-file_helpo = file_help.replace("_", " ")
+__mod_name__ = "Night 🌒"
 
 __help__ = """
- - /nightmode on/off
+<b> Mode Malam </b>
+Tutup grup Anda pada pukul 12.00 dan buka kembali pada pukul 6.00(WIB)
+<i> Hanya tersedia untuk negara-negara Asia </i>
 
-**Note:** Night Mode chats get Automatically closed at 12pm(WIB)
-and Automatically openned at 6am(WIB) To Prevent Night Spams.
+- /nightmode [ON/OFF]: Aktifkan/Nonaktifkan Mode Malam.
+
 """
-__mod_name__ = "Night"

@@ -483,7 +483,7 @@ def aboutmanu_helpgrup(update, context):
                     ],
                     [
                         InlineKeyboardButton(text="📚All Cmd", callback_data="help_back"),
-                        InlineKeyboardButton(text="🔒Close", callback_data="aboutmanu_tutup"),
+                        InlineKeyboardButton(text="🔒Close", callback_data="tutup_"),
                         InlineKeyboardButton(text="▶️Other", callback_data="aboutmanu_nextgrup")],
                 ]
             ),
@@ -495,7 +495,7 @@ def aboutmanu_nextgrup(update, context):
     chat = update.effective_chat
     user = update.effective_user
     member = chat.get_member(user.id)
-    if member.status != "creator" and "administrator" and user.id not in DRAGONS:
+    if member.status != "creator" and user.id not in DRAGONS:
         update.effective_message.reply_text(
             "You need to be admin to do this!"
         )
@@ -534,91 +534,16 @@ def aboutmanu_nextgrup(update, context):
                     [
                         InlineKeyboardButton(text="◀️Back", callback_data="aboutmanu_helpgrup"),
                         InlineKeyboardButton(text="🔒Close", callback_data="aboutmanu_tutup"),
-                        InlineKeyboardButton(text="📚All Cmd", callback_data="help_back")],
+                        InlineKeyboardButton(text="📚All Cmd", callback_data="tutup_")],
                 ]
             ),
         )
 
 
-    elif query.data == "aboutmanu_credit":
-        query.message.edit_text(
-            text=f"*{dispatcher.bot.first_name} Is the redisigned version of Daisy and Naruto for the best performance.*"
-            f"\n\nBased on [Daisy](https://github.com/inukaasith/daisy) + [Naruto](https://github.com/imjanindu/narutorobot)."
-            f"\n\n{dispatcher.bot.first_name}'s source code was written by InukaASiTH and Imjanindu"
-            f"\n\nIf Any Question About {dispatcher.bot.first_name}, \nLet Us Know At @{SUPPORT_CHAT}.",
-            parse_mode=ParseMode.MARKDOWN,
-            disable_web_page_preview=True,
-            reply_markup=InlineKeyboardMarkup(
-                [[InlineKeyboardButton(text="Kembali ke bantuan", callback_data="aboutmanu_tac")]]
-            ),
-        )
-
-    elif query.data == "aboutmanu_permis":
-        query.message.edit_text(
-            text=f"*Perintah Dasar*"
-            f"\n\n👮🏻Tersedia untuk Admin"
-            f"\n🕵🏻Tersedia untuk Semua Anggota"
-            f"\n\n👮🏻 `/admincache` memperbarui daftar Admin dan hak istimewanya"
-            f"\n\n🕵🏻  `/help` anda dapat melihat atau mengelola semua pengaturan Bot di pm"
-            f"\n\n👮🏻  `/ban` anda dapat memblokir pengguna dari grup tanpa memberinya kemungkinan untuk bergabung kembali menggunakan tautan grup"
-            f"\n\n👮🏻  `/mute` menempatkan pengguna dalam mode hanya-membaca. Dia bisa membaca tetapi tidak bisa mengirim pesan apapun"
-            f"\n\n👮🏻  `/kick` menendang pengguna dari grup, memberinya kemungkinan untuk bergabung kembali menggunakan tautan grup"
-            f"\n\n👮🏻  `/unban` menghapus blokiran pengguna dari grup dalam daftar blokiran, memberinya kemungkinan untuk bergabung kembali dengan tautan grup"
-            f"\n\n👮🏻  `/info` memberikan informasi tentang pengguna"
-            f"\n👮🏻  `/whois` mirip dengan `/info` tetapi lebih simpel"
-            f"\n\n◽️ `/admins` memberikan Daftar lengkap admin grup",
-            parse_mode=ParseMode.MARKDOWN,
-            reply_markup=InlineKeyboardMarkup(
-                [[InlineKeyboardButton(text="Kembali ke bantuan", callback_data="aboutmanu_howto")]]
-            ),
-        )
-    elif query.data == "aboutmanu_spamprot":
-        query.message.edit_text(
-            text="*Perintah Lanjutan*"
-            "\n\n🔘Tersedia untuk Admin"
-            "\n\n*MANAJEMEN PERINGATAN*"
-            "\n👮🏻  `/warn` memberikan peringatan ke pengguna"
-            "\n👮🏻  `/resetwarn` balas ke pengguna untuk menghapus warn"
-            "\n👮🏻  `/warns` memungkinkan anda melihat dan mengelola peringatan pengguna"
-            "\n👮🏻  `/addwarn [kata kunci]` balas ke pesan untuk mengatur filter peringatan pada kata kunci tertentu."
-            "\n\n🛃 `/del` menghapus pesan yang dipilih"
-            "\n🛃 `/purge` menghapus antara pesan yang dipilih sampai pesan saat ini"
-            "\n\n◽️  `/reports [on/off]` mengubah pengaturan laporan, atau melihat status saat ini."
-            "\n\n👮🏻 `/antispam [on/off]` Mengatur keamanan antispam di grup. Ini akan membantu melindungi Anda dan grup Anda dengan menghapus pembanjir spam secepat mungkin",
-            parse_mode=ParseMode.MARKDOWN,
-            reply_markup=InlineKeyboardMarkup(
-                [[InlineKeyboardButton(text="Kembali ke bantuan", callback_data="aboutmanu_howto")]]
-            ),
-        )  
-    elif query.data == "aboutmanu_expert":
-        query.message.edit_text(
-            text=f"*Perintah Dasar*"
-            f"\n\n👮🏻Tersedia untuk Admin"
-            f"\n🕵🏻Tersedia untuk Semua Anggota"
-            f"\n\n👮🏻 `/admincache` memperbarui daftar Admin dan hak istimewanya"
-            f"\n<Code>You must be this chat administrator to perform this action!</code>"
-            f"\nThis has nothing to do with {dispatcher.bot.first_name}'s rights; this is all about YOUR permissions as an admin. {dispatcher.bot.first_name} respects admin permissions; if you do not have the Ban Users permission as a telegram admin, you won't be able to ban users with {dispatcher.bot.first_name}. Similarly, to change {dispatcher.bot.first_name} settings, you need to have the Change group info permission."
-            f"\n\nThe message very clearly says that you need these rights - <i>not {dispatcher.bot.first_name}.</i>",
-            parse_mode=ParseMode.MARKDOWN,
-            reply_markup=InlineKeyboardMarkup(
-                [[InlineKeyboardButton(text="Back", callback_data="aboutmanu_howto")]]
-            ),
-        )
-    elif query.data == "aboutmanu_guide":
-        query.message.edit_text(
-            text=f"*Perintah Dasar*"
-            f"\n\n👮🏻Tersedia untuk Admin"
-            f"\n🕵🏻Tersedia untuk Semua Anggota"
-            f"\n\nIf you are getting a message saying:"
-            f"\n<Code>You must be this chat administrator to perform this action!</code>"
-            f"\nThis has nothing to do with {dispatcher.bot.first_name}'s rights; this is all about YOUR permissions as an admin. {dispatcher.bot.first_name} respects admin permissions; if you do not have the Ban Users permission as a telegram admin, you won't be able to ban users with {dispatcher.bot.first_name}. Similarly, to change {dispatcher.bot.first_name} settings, you need to have the Change group info permission."
-            f"\n\nThe message very clearly says that you need these rights - <i>not {dispatcher.bot.first_name}.</i>",
-            parse_mode=ParseMode.MARKDOWN,
-            reply_markup=InlineKeyboardMarkup(
-                [[InlineKeyboardButton(text="Back", callback_data="aboutmanu_howto")]]
-            ),
-        )
-    elif query.data == "aboutmanu_tutup":
+@run_async
+def Tutup_about_callback(update: Update, context: CallbackContext):
+    query = update.callback_query
+    if query.data == "tutup_":
         query.message.edit_text(
             text=f"*Menu Ditutup*🔒"
             f"",
@@ -924,6 +849,7 @@ def main():
 
     about_callback_handler = CallbackQueryHandler(Masha_about_callback, pattern=r"masha_")
     aboutmanu_callback_handler = CallbackQueryHandler(Aboutmanu_about_callback, pattern=r"aboutmanu_")
+    tutup_callback_handler = CallbackQueryHandler(Tutup_about_callback, pattern=r"tutup_")
 
     donate_handler = CommandHandler("donate", donate)
     migrate_handler = MessageHandler(Filters.status_update.migrate, migrate_chats)
@@ -933,6 +859,7 @@ def main():
     dispatcher.add_handler(help_handler)
     dispatcher.add_handler(about_callback_handler)
     dispatcher.add_handler(aboutmanu_callback_handler)
+    dispatcher.add_handler(tutup_callback_handler)
     dispatcher.add_handler(settings_handler)
     dispatcher.add_handler(help_callback_handler)
     dispatcher.add_handler(settings_callback_handler)

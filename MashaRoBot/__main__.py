@@ -304,15 +304,15 @@ def help_button(update, context):
                 parse_mode=ParseMode.MARKDOWN,
                 disable_web_page_preview=True,
                 reply_markup=InlineKeyboardMarkup(
-                  [
-                   [
-                      InlineKeyboardButton(text="Help-Back", callback_data="help_back")
-                      InlineKeyboardButton(text="Group-Menu", callback_data="helpgrup_")],
-                   ]
-                  ]
-              ),
-          )
-
+                    [
+                        [
+                            InlineKeyboardButton(text="Help back", callback_data="help_back")
+                        ],
+                        [
+                            InlineKeyboardButton(text="Group menu", callback_data="helpgrup_")],
+                    ]
+                ),
+            )
         elif prev_match:
             curr_page = int(prev_match.group(1))
             query.message.edit_text(

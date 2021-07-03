@@ -489,7 +489,7 @@ def helpgrup_about_callback(update, context):
                 ]
             ),
         )
-     else:
+    elif query.data == "helpgrup_":
          client.answer_callback_query(
              text="only admin can use this!",
              show_alert=True,

@@ -28,6 +28,7 @@ from MashaRoBot import (
 from MashaRoBot.modules import ALL_MODULES
 from MashaRoBot.modules.helper_funcs.chat_status import is_user_admin
 from MashaRoBot.modules.helper_funcs.chat_status import user_admin
+from MashaRoBot import pbot
 from MashaRoBot.modules.helper_funcs.misc import paginate_modules
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, ParseMode, Update
 from telegram.error import (
@@ -306,10 +307,8 @@ def help_button(update, context):
                 reply_markup=InlineKeyboardMarkup(
                     [
                         [
-                            InlineKeyboardButton(text="Help back", callback_data="help_back")
-                        ],
-                        [
-                            InlineKeyboardButton(text="Group menu", callback_data="helpgrup_")],
+                            InlineKeyboardButton(text="Group menu", callback_data="helpgrup_"),
+                            InlineKeyboardButton(text="Back", callback_data="help_back")],
                     ]
                 ),
             )
@@ -386,9 +385,9 @@ def Aboutmanu_about_callback(update, context):
     query = update.callback_query
     if query.data == "aboutmanu_":
         query.message.edit_text(
-            text=f"*Rosi* adalah Bot yang copas penampilan dari Grup Help dan hasil cloning dari beberapa repo manager yang ada, daring sejak 23 april 2020 dan terus diperbarui!"
+            text=f"*Rosi* adalah Bot cloning dari beberapa repo manager yang ada, daring sejak 23 april 2020 dan terus diperbarui!"
             f"\n\n*Versi Bot:* _2.0_"
-            f"\n\nTerima kasih kepada *SaitamaRobot*, *Masha* dan semua manajer peladen lainnya, semua admin bot, semua *pendukung*, dan semua pengguna yang membantu kami dalam mengelola, *donatur*, dan semua pengguna yang melaporkan kesalahan atau fitur baru kepada kami."
+            f"\n\nTerima kasih kepada *SaitamaRobot*, *MashaRobot* dan semua manajer peladen lainnya, semua admin bot, semua *pendukung*, dan semua pengguna yang membantu kami dalam mengelola, *donatur*, dan semua pengguna yang melaporkan kesalahan atau fitur baru kepada kami."
             f"\n\nJuga terima kasih kepada *semua grup* yang menggunakan bot kami, kami terus belajar agar tidak copas doang!"
             f"\n💡 [Terms & Conditions](https://telegra.ph/Terms-and-Conditions-06-23)",
             parse_mode=ParseMode.MARKDOWN,
@@ -441,6 +440,7 @@ def Aboutmanu_about_callback(update, context):
 
 @run_async
 @user_admin
+@pbot.on_callback_query
 def helpgrup_about_callback(update, context):
     query = update.callback_query
     if query.data == "helpgrup_":
@@ -489,6 +489,11 @@ def helpgrup_about_callback(update, context):
                 ]
             ),
         )
+     else:
+         client.answer_callback_query(
+             text="only admin can use this!",
+             show_alert=True,
+         )
 
 
 @run_async
@@ -525,12 +530,12 @@ def nextgrup_about_callback(update, context):
                         InlineKeyboardButton(text="Clean-Blue 🌀", callback_data="aboutmanu_pembersih"),   
                     ],
                     [
-                        InlineKeyboardButton(text="Force-Subs🔔", callback_data="aboutmanu_force"),
+                        InlineKeyboardButton(text="Force-Subs 🔔", callback_data="aboutmanu_force"),
                     ],
                     [
-                        InlineKeyboardButton(text="◀️Back", callback_data="aboutmanu_helpgrup"),
-                        InlineKeyboardButton(text="🔒Close", callback_data="aboutmanu_tutup"),
-                        InlineKeyboardButton(text="📚All Cmd", callback_data="tutup_")],
+                        InlineKeyboardButton(text="◀️Back", callback_data="helpgrup_"),
+                        InlineKeyboardButton(text="🔒Close", callback_data="tutup_"),
+                        InlineKeyboardButton(text="📚All Cmd", callback_data="help_back")],
                 ]
             ),
         )

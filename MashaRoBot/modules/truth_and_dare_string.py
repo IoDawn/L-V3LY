@@ -56,7 +56,7 @@ TRUTH = (
     "Lagu apa di radio atau ponsel cerdas Anda yang Anda nyanyikan setiap kali dinyanyikan?",
     "Apakah Anda memiliki sepasang telinga yang tidak suka mendengarkan gibah?",
     "Apakah Anda takut gelap? dan mengapa..?",
-    "Pernahkah Anda melihat setan? jika pernah, bagaimana ekspresi anda saat itu?
+    "Pernahkah Anda melihat setan? jika pernah, bagaimana ekspresi anda saat itu?",
     "Produk seperti iklan di tv apa yang diam-diam ingin Anda beli?",
     "Apakah kamu masih suka mandi bola?",
     "Jika Anda berada di rumah sendiri sepanjang hari, apa yang akan Anda lakukan?",

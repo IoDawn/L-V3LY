@@ -65,8 +65,8 @@ TRUTH = (
     "Kapan terakhir kali Anda menggosok gigi? (-_-)",
     "Apakah kamu pernah makan sesuatu dari lantai?",
     "Apakah kamu suka makan kadal?",
-    "Apa yang membuatmu suka merasa bahwa dirimu tidak pantas untuk dia..
-    "Pernahkah kamu ngeghosting seseorang?"
+    "Apa yang membuatmu suka merasa bahwa dirimu tidak pantas untuk dia..",
+    "Pernahkah kamu ngeghosting seseorang?",
     "Apakah kamu pernah berjalan di atas orang tuamu melakukan 'itu'?",
     "Siapa orang terakhir yang paling kamu sukai? Mengapa?",
     "Apakah kamu pernah diskors dari sekolah?",

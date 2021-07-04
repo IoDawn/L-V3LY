@@ -439,7 +439,6 @@ def Aboutmanu_about_callback(update, context):
         )
 
 @run_async
-@user_admin
 def helpgrup_about_callback(update, context):
     query = update.callback_query
     if query.data == "helpgrup_":
@@ -488,9 +487,9 @@ def helpgrup_about_callback(update, context):
                 ]
             ),
         )
-    elif query.data == "helpgrup_":
+    elif query.data == "tutup_":
         if member.status == "member":
-            query.answer("You need to be admin to do this.")
+            query.answer("You need to be admin to do this!")
             show_alert=True,
 
 
@@ -537,7 +536,7 @@ def nextgrup_about_callback(update, context):
                 ]
             ),
         )
-    elif query.data == "helpgrup_":
+    elif query.data == "nextgrup_":
          client.answer_callback_query(
              cb.id,
              text="only admins can use this!.",

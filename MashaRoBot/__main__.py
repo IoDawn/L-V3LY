@@ -76,25 +76,23 @@ def get_readable_time(seconds: int) -> str:
 
 
 PM_START_TEXT = """
-NAMA SAYA ROSI..
-
-
-➪COMING SOON..
+Hei..nama saya *Roso*![ㅤ](https://telegra.ph/file/9dc4aa4cb127c8dd76d96.jpg)  
+Saya adalah bot yang Strong dan berEnergi untuk mengelola grup Anda! Lihat *menu* dibawah ini untuk melihat daftar perintah yang dapat digunakan.
 """
 
 buttons = [
     [
         InlineKeyboardButton(
-            text="Tambahkan ke Grup", url="t.me/RossiManage_bot?startgroup=true"),
+            text="Tambahkan ke Grup", url="t.me/RosoManage2_bot?startgroup=true"),
     ],
     [
         InlineKeyboardButton(
-            text="About", callback_data="masha_"),
+            text="Info", callback_data="masha_"),
         InlineKeyboardButton(
-            text="Plugins", callback_data="help_back"),
+            text="Menu", callback_data="aboutmanu_"),
     ],
     [  
-        InlineKeyboardButton(text="Bantuan", callback_data="aboutmanu_"
+        InlineKeyboardButton(text="Other-Bot", url="t.me/RosoManage_bot"
     ),
     ],
 ]
@@ -102,7 +100,7 @@ buttons = [
 
 
 HELP_STRINGS = """
-*Pengaturan Grup*
+*DAFTAR PENGATURAN*
 """
 
 
@@ -305,13 +303,9 @@ def help_button(update, context):
                 parse_mode=ParseMode.MARKDOWN,
                 disable_web_page_preview=True,
                 reply_markup=InlineKeyboardMarkup(
-                    [
-                        [
-                            InlineKeyboardButton(text="Group menu", callback_data="helpgrup_"),
-                            InlineKeyboardButton(text="Back", callback_data="help_back")],
-                    ]
-                ),
-            )
+                        [[InlineKeyboardButton(text="🔙Kembali", callback_data="help_back")]]
+                    ),
+                )
         elif prev_match:
             curr_page = int(prev_match.group(1))
             query.message.edit_text(
@@ -353,19 +347,19 @@ def Masha_about_callback(update: Update, context: CallbackContext):
     query = update.callback_query
     if query.data == "masha_":
         query.message.edit_text(
-            text=""" ℹ️ I'm *Rosi*, a powerful group management bot built to help you manage your group easily.
-                 ❍ I can restrict users.
-                 ❍ I can greet users with customizable welcome messages and even set a group's rules.
-                 ❍ I have an advanced anti-flood system.
-                 ❍ I can warn users until they reach max warns, with each predefined actions such as ban, mute, kick, etc.
-                 ❍ I have a note keeping system, blacklists, and even predetermined replies on certain keywords.
-                 ❍ I check for admins' permissions before executing any command and more stuffs.""",
+            text="""ℹ️ Saya *Roso*, bot manajemen grup yang kuat yang dibuat untuk membantu Anda mengelola grup dengan mudah.
+ ❍ Saya dapat membatasi pengguna.
+ ❍ Saya dapat menyapa pengguna dengan pesan selamat datang yang dapat disesuaikan dan bahkan menetapkan aturan grup.
+ ❍ Saya memiliki sistem anti-banjir(pesan) yang canggih.
+ ❍ Saya dapat memperingatkan pengguna sampai mereka mencapai peringatan maksimal, dengan setiap tindakan yang telah ditentukan seperti ban,mute,kick,dll.
+ ❍ Saya memiliki sistem pencatatan(rules), daftar hitam(blacklist), dan bahkan balasan yang telah ditentukan sebelumnya pada kata kunci tertentu(filters).
+ ❍ Saya memeriksa izin admin sebelum menjalankan perintah apa pun dan lebih banyak perintah yang lainnya.""",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
                 [
                  [
-                    InlineKeyboardButton(text="Back", callback_data="masha_back")
+                    InlineKeyboardButton(text="🔝Kembali", callback_data="masha_back")
                  ]
                 ]
             ),
@@ -385,23 +379,20 @@ def Aboutmanu_about_callback(update, context):
     query = update.callback_query
     if query.data == "aboutmanu_":
         query.message.edit_text(
-            text=f"*Rosi* adalah Bot cloning dari beberapa repo manager yang ada, daring sejak 23 april 2020 dan terus diperbarui!"
-            f"\n\n*Versi Bot:* _2.0_"
-            f"\n\nTerima kasih kepada *SaitamaRobot*, *MashaRobot* dan semua manajer peladen lainnya, semua admin bot, semua *pendukung*, dan semua pengguna yang membantu kami dalam mengelola, *donatur*, dan semua pengguna yang melaporkan kesalahan atau fitur baru kepada kami."
-            f"\n\nJuga terima kasih kepada *semua grup* yang menggunakan bot kami, kami terus belajar agar tidak copas doang!"
-            f"\n💡 [Terms & Conditions](https://telegra.ph/Terms-and-Conditions-06-23)",
+            text=f"*Pilih menu dibawah ini*:"
+            f"\n`Versi Bot`: _2.0_",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
-                        InlineKeyboardButton(text="Bantuan untuk bot", callback_data="aboutmanu_tac")
+                        InlineKeyboardButton(text="Plugins", callback_data="help_back")
                     ],
                     [
-                        InlineKeyboardButton(text="🔆 Perintah bot", callback_data="aboutmanu_howto")
+                        InlineKeyboardButton(text="Group-Menu", callback_data="helpgrup_")
                     ],
                     [   
-                        InlineKeyboardButton(text="🔙Kembali", callback_data="aboutmanu_back")],
+                        InlineKeyboardButton(text="🔝Kembali", callback_data="aboutmanu_back")],
                 ]
             ),
         )
@@ -413,37 +404,13 @@ def Aboutmanu_about_callback(update, context):
             timeout=60,
         )
 
-    elif query.data == "aboutmanu_howto":
-        query.message.edit_text(
-            text=f"Selamat datang di menu bantuan"
-            f"",
-            parse_mode=ParseMode.MARKDOWN,
-            disable_web_page_preview=True,
-            reply_markup=InlineKeyboardMarkup(
-                [
-                    [
-                        InlineKeyboardButton(text="💁🏻‍♂Perintah dasar", callback_data="aboutmanu_permis"),
-                        InlineKeyboardButton(text="🙋🏻‍♂Lanjutan", callback_data="aboutmanu_spamprot"),
-                    ],
-                    [
-                        InlineKeyboardButton(text="🕵🏻Ahli", callback_data="aboutmanu_expert"),
-                        InlineKeyboardButton(text="💆🏻‍♂Panduan Pro", callback_data="aboutmanu_guide"),   
-                    ],
-                    [
-                        InlineKeyboardButton(text="➕Bantuan Lengkap➕",callback_data="help_back"),
-                    ],
-                    [   
-                        InlineKeyboardButton(text="🔙Kembali", callback_data="aboutmanu_back")],
-                ]
-            ),
-        )
 
 @run_async
 def helpgrup_about_callback(update, context):
     query = update.callback_query
     if query.data == "helpgrup_":
         query.message.edit_text(
-            text=f"*Pengaturan Grup*"
+            text=f"*Pengaturan Grup* ➪_coming soon_"
             f"\n\n_Pilih salah satu pengaturan yang ingin anda ubah._",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
@@ -494,12 +461,11 @@ def helpgrup_about_callback(update, context):
 
 
 @run_async
-@pbot.on_callback_query
 def nextgrup_about_callback(update, context):
     query = update.callback_query
     if query.data == "nextgrup_":
         query.message.edit_text(
-            text=f"*Pengaturan Grup*"
+            text=f"*Pengaturan Grup* ➪_coming soon_"
             f"\n\n_Pilih salah satu pengaturan yang ingin anda ubah._",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,

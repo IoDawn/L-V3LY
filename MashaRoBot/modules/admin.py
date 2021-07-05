@@ -195,7 +195,7 @@ def refresh_admin(update, _):
     except KeyError:
         pass
 
-    update.effective_message.reply_text("Admins cache refreshed!")
+    update.effective_message.reply_text("✅ Bot restarted\n✅ Admin list updated")
 
 
 @run_async
@@ -539,7 +539,7 @@ def adminlist(update, context):
         )
 
     administrators = bot.getChatAdministrators(chat_id)
-    text = "Admins in <b>{}</b>:".format(html.escape(update.effective_chat.title))
+    text = "STAFF IN <b>{}</b>:".format(html.escape(update.effective_chat.title))
 
     bot_admin_list = []
 
@@ -564,14 +564,14 @@ def adminlist(update, context):
 
         # if user.username:
         #    name = escape_markdown("@" + user.username)
-        if status == "creator":
-            text += "\n 👑 Creator:"
-            text += "\n<code> • </code>{}\n".format(name)
+        if status == "Creator":
+            text += "\n👑 <b>Creator</b>"
+            text += "\n └{}\n".format(name)
 
             if custom_title:
                 text += f"<code> ┗━ {html.escape(custom_title)}</code>\n"
 
-    text += "\n🔱 Admins:"
+    text += "\n⚜️ <b>Admins</b>"
 
     custom_admin_list = {}
     normal_admin_list = []
@@ -601,11 +601,11 @@ def adminlist(update, context):
                 normal_admin_list.append(name)
 
     for admin in normal_admin_list:
-        text += "\n<code> • </code>{}".format(admin)
+        text += "\n └{}".format(admin)
 
     for admin_group in custom_admin_list.copy():
         if len(custom_admin_list[admin_group]) == 1:
-            text += "\n<code> • </code>{} | <code>{}</code>".format(
+            text += "\n └{} | <code>{}</code>".format(
                 custom_admin_list[admin_group][0], html.escape(admin_group)
             )
             custom_admin_list.pop(admin_group)
@@ -617,9 +617,9 @@ def adminlist(update, context):
             text += "\n<code> • </code>{}".format(admin)
         text += "\n"
 
-    text += "\n🤖 Bots:"
+    text += "\n🤖 <b>Bots</b>"
     for each_bot in bot_admin_list:
-        text += "\n<code> • </code>{}".format(each_bot)
+        text += "\n └{}".format(each_bot)
 
     try:
         msg.edit_text(text, parse_mode=ParseMode.HTML)
@@ -628,7 +628,7 @@ def adminlist(update, context):
 
 
 __help__ = """
-❍ /admins*:* list of admins in the chat
+❍ /admins*:* Cek daftar admin di grup anda
 
 *Admins only:*
  ❍ /pin*:* Menyematkan pesan yang dibalas tanpa notif- tambahkan 'loud' atau 'notify' untuk memberikan notifikasi kepada anggota grup

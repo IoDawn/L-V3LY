@@ -637,7 +637,7 @@ __help__ = """
  ❍ /promote*:* Promote user
  ❍ /demote*:* Turunkan jabatan user
  ❍ /title <title>*:* Menetapkan judul khusus untuk admin yang dipromosikan bot
- ❍ /admincache*:* Refresh daftar admin
+ ❍ /reload*:* Refresh daftar admin
  ❍ /antispam <on/off>*:* Akan mengaktifkan teknologi antispam kami atau melihat pengaturan Anda saat ini.
  ❍ /setgtitle <title>*:* Menetapkan judul obrolan baru di grup Anda.
  ❍ /setgpic*:* Balas ke file atau foto untuk mengatur foto profil grup!
@@ -661,7 +661,7 @@ DEMOTE_HANDLER = DisableAbleCommandHandler("demote", demote)
 
 SET_TITLE_HANDLER = CommandHandler("title", set_title)
 ADMIN_REFRESH_HANDLER = CommandHandler(
-    "admincache", refresh_admin, filters=Filters.group
+    "reload", refresh_admin, filters=Filters.group
 )
 
 CHAT_PIC_HANDLER = CommandHandler("setgpic", setchatpic, filters=Filters.group)
@@ -698,7 +698,7 @@ __command_list__ = [
     "invitelink",
     "promote",
     "demote",
-    "admincache",
+    "reload",
 ]
 __handlers__ = [
     ADMINLIST_HANDLER,

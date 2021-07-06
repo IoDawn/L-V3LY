@@ -241,21 +241,21 @@ def info(update: Update, context: CallbackContext):
     rep = message.reply_text("<code>Appraising...</code>", parse_mode=ParseMode.HTML)
 
     text = (
-        f"╒═══「<b>❄️Appraisal results❄️:</b> 」\n"
-        f"⚓ID: <code>{user.id}</code>\n"
-        f"✨First Name: {html.escape(user.first_name)}"
+        f"╒═「<b>🔰 Appraisal results 🔰</b> 」\n"
+        f"🆔: <code>{user.id}</code>\n"
+        f"🏷 First name: {html.escape(user.first_name)}"
     )
 
     if user.last_name:
-        text += f"\n⚓Last Name: {html.escape(user.last_name)}"
+        text += f"\n⏮Last Name: {html.escape(user.last_name)}"
 
     if user.username:
-        text += f"\n✨Username: @{html.escape(user.username)}"
+        text += f"\n🌐 Username: @{html.escape(user.username)}"
 
-    text += f"\n🚨Permalink: {mention_html(user.id, 'link')}"
+    text += f"\n👤 Permalink: {mention_html(user.id, 'link')}"
 
     if chat.type != "private" and user_id != bot.id:
-        _stext = "\nPresence: <code>{}</code>"
+        _stext = "\n📌 Presence: <code>{}</code>"
 
         afk_st = is_afk(user.id)
         if afk_st:
@@ -479,7 +479,7 @@ def set_about_bio(update: Update, context: CallbackContext):
 
         if user_id == bot.id and sender_id not in DEV_USERS:
             message.reply_text(
-                "Erm... yeah, I only trust Emcee powerhouse to set my bio."
+                "Erm... yeah, I only trust Roso-Owner to set my bio."
             )
             return
 

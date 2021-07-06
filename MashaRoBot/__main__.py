@@ -88,12 +88,12 @@ buttons = [
     ],
     [
         InlineKeyboardButton(
-            text="ℹ️ Info", callback_data="masha_"),
+            text="ℹ️ About", callback_data="masha_"),
         InlineKeyboardButton(
             text="Menu ⏹", callback_data="aboutmanu_"),
     ],
     [  
-        InlineKeyboardButton(text="◾️ Other-Bot ◾️", url="t.me/RosoManage_bot"
+        InlineKeyboardButton(text="🔘 Other-Bot 🔘", url="t.me/RosoManage_bot"
     ),
     ],
 ]
@@ -348,13 +348,13 @@ def Masha_about_callback(update: Update, context: CallbackContext):
     query = update.callback_query
     if query.data == "masha_":
         query.message.edit_text(
-            text="""ℹ️ Saya *Roso*, bot manajemen grup yang kuat yang dibuat untuk membantu Anda mengelola grup dengan mudah.
- ❍ Saya dapat membatasi pengguna.
- ❍ Saya dapat menyapa pengguna dengan pesan selamat datang yang dapat disesuaikan dan bahkan menetapkan aturan grup.
- ❍ Saya memiliki sistem anti-banjir(pesan) yang canggih.
- ❍ Saya dapat memperingatkan pengguna sampai mereka mencapai peringatan maksimal, dengan setiap tindakan yang telah ditentukan seperti ban,mute,kick,dll.
- ❍ Saya memiliki sistem pencatatan(rules), daftar hitam(blacklist), dan bahkan balasan yang telah ditentukan sebelumnya pada kata kunci tertentu(filters).
- ❍ Saya memeriksa izin admin sebelum menjalankan perintah apa pun dan lebih banyak perintah yang lainnya.""",
+            text="""Saya *Roso*, bot manajemen grup yang kuat yang dibuat untuk membantu Anda mengelola grup dengan mudah.
+ ☉  Saya dapat membatasi pengguna.
+ ☉  Saya dapat menyapa pengguna dengan pesan selamat datang yang dapat disesuaikan dan bahkan menetapkan aturan grup.
+ ☉  Saya memiliki sistem anti-banjir(pesan) yang canggih.
+ ☉  Saya dapat memperingatkan pengguna sampai mereka mencapai peringatan maksimal, dengan setiap tindakan yang telah ditentukan seperti ban,mute,kick,dll.
+ ☉  Saya memiliki sistem pencatatan(rules), daftar hitam(blacklist), dan bahkan balasan yang telah ditentukan sebelumnya pada kata kunci tertentu(filters).
+ ☉  Saya memeriksa izin admin sebelum menjalankan perintah apa pun dan lebih banyak perintah yang lainnya.""",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
@@ -426,8 +426,8 @@ def helpgrup_about_callback(update, context):
                         InlineKeyboardButton(text="💬 Filters", callback_data="aboutmanu_filter"),   
                     ],
                     [
-                        InlineKeyboardButton(text="⚠ Warning", callback_data="aboutmanu_warn"),
-                        InlineKeyboardButton(text="⛔️ Banned", callback_data="aboutmanu_bans"),
+                        InlineKeyboardButton(text="❎ Disable", callback_data="aboutmanu_disable"),
+                        InlineKeyboardButton(text="✅ Approve", callback_data="aboutmanu_approve"),
                     ],
                     [
                         InlineKeyboardButton(text="📜 Rules", callback_data="aboutmanu_rules"),
@@ -438,7 +438,7 @@ def helpgrup_about_callback(update, context):
                         InlineKeyboardButton(text="📓 Blacklist", callback_data="aboutmanu_blacklist"),   
                     ],
                     [
-                        InlineKeyboardButton(text="🧠 Captcha", callback_data="aboutmanu_captcha"),
+                        InlineKeyboardButton(text="🧠 Log-Channel", callback_data="aboutmanu_captcha"),
                         InlineKeyboardButton(text="⛩ Welcome", callback_data="aboutmanu_welcome"),
                     ],
                     [
@@ -446,7 +446,7 @@ def helpgrup_about_callback(update, context):
                         InlineKeyboardButton(text="⏳ Anti-Flood", callback_data="aboutmanu_flood"),   
                     ],
                     [
-                        InlineKeyboardButton(text="Night Mode 🌒",callback_data="aboutmanu_modemalam"),
+                        InlineKeyboardButton(text="Force-Subscribe 🔔",callback_data="aboutmanu_force"),
                     ],
                     [
                         InlineKeyboardButton(text="📚All Cmd", callback_data="help_back"),
@@ -479,22 +479,22 @@ def nextgrup_about_callback(update, context):
                         InlineKeyboardButton(text="Stickers 🎭", callback_data="aboutmanu_stiker"),   
                     ],
                     [
-                        InlineKeyboardButton(text="Musicall 🎧", callback_data="aboutmanu_musik"),
+                        InlineKeyboardButton(text="Connection 🕹", callback_data="aboutmanu_koneksi"),
                     ],
                     [
-                        InlineKeyboardButton(text="Anti-NSFW 🛡",callback_data="aboutmanu_youtube"),
-                    ],
-                    [
-                        InlineKeyboardButton(text="Conection 🕹", callback_data="aboutmanu_koneksi"),
+                        InlineKeyboardButton(text="Anti-NSFW 🛡",callback_data="aboutmanu_shield"),
                     ],
                     [
                         InlineKeyboardButton(text="Federation 🛂", callback_data="aboutmanu_federasi"),
                     ],
                     [
+                        InlineKeyboardButton(text="Bl-Stickers 🃏", callback_data="aboutmanu_blstiker"),
+                    ],
+                    [
                         InlineKeyboardButton(text="Clean-Blue 🌀", callback_data="aboutmanu_pembersih"),   
                     ],
                     [
-                        InlineKeyboardButton(text="Force-Subs 🔔", callback_data="aboutmanu_force"),
+                        InlineKeyboardButton(text="Night Mode 🌒", callback_data="aboutmanu_malam"),
                     ],
                     [
                         InlineKeyboardButton(text="◀️Back", callback_data="helpgrup_"),
@@ -555,16 +555,18 @@ def get_help(update: Update, context: CallbackContext):
         update.effective_message.reply_text(
             "Contact me in PM to get the list of possible commands.",
             reply_markup=InlineKeyboardMarkup(
-                [
                     [
-                        InlineKeyboardButton(
-                            text="Help",
-                            url="t.me/{}?start=help".format(context.bot.username),
-                        )
+                        [
+                            InlineKeyboardButton(
+                                text="👤 Buka di pesan pribadi",
+                                url="t.me/{}?start=help".format(context.bot.username),
+                            )
+                        ],
+                        [   
+                            InlineKeyboardButton(text="👥 Buka Disini",callback_data="helpgrup_")],   
                     ]
-                ]
-            ),
-        )
+                ),
+            )
         return
 
     elif len(args) >= 2 and any(args[1].lower() == x for x in HELPABLE):

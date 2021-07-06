@@ -76,23 +76,24 @@ def get_readable_time(seconds: int) -> str:
 
 
 PM_START_TEXT = """
-Hei..nama saya *Roso*![ㅤ](https://telegra.ph/file/9dc4aa4cb127c8dd76d96.jpg)  
-Saya adalah bot yang Strong dan berEnergi untuk mengelola grup Anda! Lihat *menu* dibawah ini untuk melihat daftar perintah yang dapat digunakan.
+Hei..nama saya *Roso*! [ㅤ](https://telegra.ph/file/9dc4aa4cb127c8dd76d96.jpg)ㅤ  
+Saya adalah bot yang Strong dan berEnergi untuk mengelola Grup!
+Cek *Menu* dibawah untuk melihat perintah yang dapat digunakan.
 """
 
 buttons = [
     [
         InlineKeyboardButton(
-            text="Tambahkan ke Grup", url="t.me/RosoManage2_bot?startgroup=true"),
+            text="➕Tambahkan ke Grup➕", url="t.me/RosoManage2_bot?startgroup=true"),
     ],
     [
         InlineKeyboardButton(
-            text="Info", callback_data="masha_"),
+            text="ℹ️ Info", callback_data="masha_"),
         InlineKeyboardButton(
-            text="Menu", callback_data="aboutmanu_"),
+            text="Menu ⏹", callback_data="aboutmanu_"),
     ],
     [  
-        InlineKeyboardButton(text="Other-Bot", url="t.me/RosoManage_bot"
+        InlineKeyboardButton(text="◾️ Other-Bot ◾️", url="t.me/RosoManage_bot"
     ),
     ],
 ]

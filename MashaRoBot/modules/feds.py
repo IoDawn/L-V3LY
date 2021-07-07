@@ -2347,7 +2347,7 @@ def get_chat(chat_id, chat_data):
 
 
 @run_async
-def fedowner_about_callback(update: Update, context: CallbackContext):
+def fed_owner_help(update: Update, context: CallbackContext):
     query = update.callback_query
     if query.data == "fedowner_":
         query.message.edit_text(
@@ -2455,16 +2455,8 @@ Everything is fun, until a spammer starts entering your group, and you have to b
 But then you have many groups, and you don't want this spammer to be in one of your groups - how can you deal? Do you have to manually block it, in all your groups?\n
 *No longer!* With Federation, you can make a ban in one chat overlap with all other chats.\n
 You can even designate federation admins, so your trusted admin can ban all the spammers from chats you want to protect.
-buttons = [
-    [
-        InlineKeyboardButton(
-            text="Fed-Owner", callback_data="fed_owner_help"),
-    ],
-    [
-        InlineKeyboardButton(text="Fed-Admin", callback_data="fed_admin_help"),
-        InlineKeyboardButton(text="Fed-User", callback_data="fed_user_help"),
-    ],
-]
+
+*Check*: /fedinfo
 """
 
 
@@ -2495,6 +2487,7 @@ UNSUBS_FED = CommandHandler("unsubfed", unsubs_feds)
 MY_SUB_FED = CommandHandler("fedsubs", get_myfedsubs)
 MY_FEDS_LIST = CommandHandler("myfeds", get_myfeds_list)
 DELETEBTN_FED_HANDLER = CallbackQueryHandler(del_fed_button, pattern=r"rmfed_")
+FED_OWNER_HELP_HANDLER = CommandHandler("fedownerhelp", fed_owner_help)
 fedowner_callback_handler = CallbackQueryHandler(fedowner_about_callback, pattern=r"fedowner_")
 fedadmin_callback_handler = CallbackQueryHandler(fedadmin_about_callback, pattern=r"fedadmin_")
 feduser_callback_handler = CallbackQueryHandler(feduser_about_callback, pattern=r"feduser_")
@@ -2528,6 +2521,6 @@ dispatcher.add_handler(UNSUBS_FED)
 dispatcher.add_handler(MY_SUB_FED)
 dispatcher.add_handler(MY_FEDS_LIST)
 dispatcher.add_handler(DELETEBTN_FED_HANDLER)
-dispatcher.add_handler(fedowner_callback_handler)
+dispatcher.add_handler(FED_OWNER_HELP_HANDLER)
 dispatcher.add_handler(fedadmin_callback_handler)
 dispatcher.add_handler(feduser_callback_handler)

@@ -2350,7 +2350,6 @@ def get_chat(chat_id, chat_data):
 def fed_owner_help(update: Update, context: CallbackContext):
     update.effective_message.reply_text(
     query = update.callback_query
-    if query.data == "fedowner_":
         query.message.edit_text(
             text="""*👑 Federation for Owner:*
  • `/newfed <fed_name>`*:* Creates a Federation, One allowed per user

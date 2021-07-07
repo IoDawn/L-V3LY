@@ -2349,9 +2349,7 @@ def get_chat(chat_id, chat_data):
 @run_async
 def fed_owner_help(update: Update, context: CallbackContext):
     update.effective_message.reply_text(
-    query = update.callback_query
-        query.message.edit_text(
-            text="""*👑 Federation for Owner:*
+        """*👑 Fed Owner Only:*
  • `/newfed <fed_name>`*:* Creates a Federation, One allowed per user
  • `/renamefed <fed_id> <new_fed_name>`*:* Renames the fed id to a new name
  • `/delfed <fed_id>`*:* Delete a Federation, and any information related to it. Will not cancel blocked users
@@ -2363,35 +2361,14 @@ def fed_owner_help(update: Update, context: CallbackContext):
  • `/unsetfedlog <fed_id>`*:* Removed the group as a fed log report base for the federation
  • `/fbroadcast <message>`*:* Broadcasts a messages to all groups that have joined your fed
  • `/fedsubs`*:* Shows the feds your group is subscribed to `(broken rn)`""",
-            parse_mode=ParseMode.MARKDOWN,
-            disable_web_page_preview=True,
-            reply_markup=InlineKeyboardMarkup(
-                [
-                    [
-                        InlineKeyboardButton(text="Fed-Admin", callback_data="fedadmin_"),
-                        InlineKeyboardButton(text="Fed-User", callback_data="feduser_"),
-                    ],
-                    [   
-                        InlineKeyboardButton(text="🔝Kembali", callback_data="fedowner_back")],
-                ]
-            ),
-        )
-    elif query.data == "fedowner_back":
-        query.message.edit_text(
-                PM_START_TEXT,
-                reply_markup=InlineKeyboardMarkup(buttons),
-                parse_mode=ParseMode.MARKDOWN,
-                timeout=60,
-                disable_web_page_preview=False,
-        )
+        parse_mode=ParseMode.MARKDOWN,
+    )
 
 
 @run_async
-def fedadmin_about_callback(update: Update, context: CallbackContext):
-    query = update.callback_query
-    if query.data == "fedadmin_":
-        query.message.edit_text(
-            text="""*⚜ Federation for Admins:*
+def fed_admin_help(update: Update, context: CallbackContext):
+    update.effective_message.reply_text(
+        """*⚜ Fed Admins:*
  • `/fban <user> <reason>`*:* Fed bans a user
  • `/unfban <user> <reason>`*:* Removes a user from a fed ban
  • `/fedinfo <fed_id>`*:* Information about the specified Federation
@@ -2402,66 +2379,36 @@ def fedadmin_about_callback(update: Update, context: CallbackContext):
  • `/fbanlist`*:* Displays all users who are victimized at the Federation at this time
  • `/fedchats`*:* Get all the chats that are connected in the Federation
  • `/chatfed `*:* See the Federation in the current chat\n""",
-            parse_mode=ParseMode.MARKDOWN,
-            disable_web_page_preview=True,
-            reply_markup=InlineKeyboardMarkup(
-                [
-                 [
-                    InlineKeyboardButton(text="🔝Kembali", callback_data="fedadmin_back")
-                 ]
-                ]
-            ),
-        )
-    elif query.data == "fedadmin_back":
-        query.message.edit_text(
-                PM_START_TEXT,
-                reply_markup=InlineKeyboardMarkup(buttons),
-                parse_mode=ParseMode.MARKDOWN,
-                timeout=60,
-                disable_web_page_preview=False,
-        )
+        parse_mode=ParseMode.MARKDOWN,
+    )
 
 
 @run_async
-def feduser_about_callback(update: Update, context: CallbackContext):
-    query = update.callback_query
-    if query.data == "feduser_":
-        query.message.edit_text(
-            text="""*🎩 Federation for Any user:*
+def fed_user_help(update: Update, context: CallbackContext):
+    update.effective_message.reply_text(
+        """*🆓 Any user:*
  • `/fbanstat`*:* Shows if you/or the user you are replying to or their username is fbanned somewhere or not
  • `/fednotif <on/off>`*:* Federation settings not in PM when there are users who are fbaned/unfbanned
  • `/frules`*:* See Federation regulations\n""",
-            parse_mode=ParseMode.MARKDOWN,
-            disable_web_page_preview=True,
-            reply_markup=InlineKeyboardMarkup(
-                [
-                 [
-                    InlineKeyboardButton(text="🔝Kembali", callback_data="feduser_back")
-                 ]
-                ]
-            ),
-        )
-    elif query.data == "feduser_back":
-        query.message.edit_text(
-                PM_START_TEXT,
-                reply_markup=InlineKeyboardMarkup(buttons),
-                parse_mode=ParseMode.MARKDOWN,
-                timeout=60,
-                disable_web_page_preview=False,
-        )
+        parse_mode=ParseMode.MARKDOWN,
+    )
 
 
-__mod_name__ = "Federasi"
+__mod_name__ = "Feds"
 
 __help__ = """
 Everything is fun, until a spammer starts entering your group, and you have to block it. Then you need to start banning more, and more, and it hurts.
 But then you have many groups, and you don't want this spammer to be in one of your groups - how can you deal? Do you have to manually block it, in all your groups?\n
 *No longer!* With Federation, you can make a ban in one chat overlap with all other chats.\n
-You can even designate federation admins, so your trusted admin can ban all the spammers from chats you want to protect.
+You can even designate federation admins, so your trusted admin can ban all the spammers from chats you want to protect.\n
 
-*Check*: /fedowner
+*Commands:*\n
+Feds are now divided into 3 sections for your ease. 
+❍ /fedownerhelp*:* Provides help for fed creation and owner only commands
+❍ /fedadminhelp*:* Provides help for fed administration commands
+❍ /feduserhelp*:* Provides help for commands anyone can use
+
 """
-
 
 NEW_FED_HANDLER = CommandHandler("newfed", new_fed)
 DEL_FED_HANDLER = CommandHandler("delfed", del_fed)
@@ -2491,10 +2438,8 @@ MY_SUB_FED = CommandHandler("fedsubs", get_myfedsubs)
 MY_FEDS_LIST = CommandHandler("myfeds", get_myfeds_list)
 DELETEBTN_FED_HANDLER = CallbackQueryHandler(del_fed_button, pattern=r"rmfed_")
 FED_OWNER_HELP_HANDLER = CommandHandler("fedownerhelp", fed_owner_help)
-fedadmin_callback_handler = CallbackQueryHandler(fedadmin_about_callback, pattern=r"fedadmin_")
-feduser_callback_handler = CallbackQueryHandler(feduser_about_callback, pattern=r"feduser_")
-
-
+FED_ADMIN_HELP_HANDLER = CommandHandler("fedadminhelp", fed_admin_help)
+FED_USER_HELP_HANDLER = CommandHandler("feduserhelp", fed_user_help)
 
 dispatcher.add_handler(NEW_FED_HANDLER)
 dispatcher.add_handler(DEL_FED_HANDLER)
@@ -2524,5 +2469,5 @@ dispatcher.add_handler(MY_SUB_FED)
 dispatcher.add_handler(MY_FEDS_LIST)
 dispatcher.add_handler(DELETEBTN_FED_HANDLER)
 dispatcher.add_handler(FED_OWNER_HELP_HANDLER)
-dispatcher.add_handler(fedadmin_callback_handler)
-dispatcher.add_handler(feduser_callback_handler)
+dispatcher.add_handler(FED_ADMIN_HELP_HANDLER)
+dispatcher.add_handler(FED_USER_HELP_HANDLER)

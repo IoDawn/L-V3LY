@@ -2455,8 +2455,6 @@ Everything is fun, until a spammer starts entering your group, and you have to b
 But then you have many groups, and you don't want this spammer to be in one of your groups - how can you deal? Do you have to manually block it, in all your groups?\n
 *No longer!* With Federation, you can make a ban in one chat overlap with all other chats.\n
 You can even designate federation admins, so your trusted admin can ban all the spammers from chats you want to protect.
-"""
-
 buttons = [
     [
         InlineKeyboardButton(
@@ -2467,7 +2465,7 @@ buttons = [
         InlineKeyboardButton(text="Fed-User", callback_data="fed_user_help"),
     ],
 ]
-
+"""
 
 
 NEW_FED_HANDLER = CommandHandler("newfed", new_fed)

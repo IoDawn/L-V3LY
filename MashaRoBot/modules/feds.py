@@ -2348,6 +2348,7 @@ def get_chat(chat_id, chat_data):
 
 @run_async
 def fed_owner_help(update: Update, context: CallbackContext):
+    update.effective_message.reply_text(
     query = update.callback_query
     if query.data == "fedowner_":
         query.message.edit_text(
@@ -2367,9 +2368,12 @@ def fed_owner_help(update: Update, context: CallbackContext):
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
                 [
-                 [
-                    InlineKeyboardButton(text="🔝Kembali", callback_data="fedowner_back")
-                 ]
+                    [
+                        InlineKeyboardButton(text="Fed-Admin", callback_data="fedadmin_"),
+                        InlineKeyboardButton(text="Fed-User", callback_data="feduser_"),
+                    ],
+                    [   
+                        InlineKeyboardButton(text="🔝Kembali", callback_data="fedowner_back")],
                 ]
             ),
         )

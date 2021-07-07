@@ -2371,7 +2371,7 @@ def fed_owner_help(update: Update, context: CallbackContext):
                 ]
             ),
         )
-    elif query.data == "fedownerhelp_back":
+    elif query.data == "fed_owner_help_back":
         query.message.edit_text(
                 PM_START_TEXT,
                 reply_markup=InlineKeyboardMarkup(buttons),

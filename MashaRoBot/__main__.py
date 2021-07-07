@@ -740,14 +740,7 @@ def get_settings(update: Update, context: CallbackContext):
                 ),
             )
         else:
-            if (
-                not client.get_chat_member(chat_id, (client.get_me()).id).status
-                == "administrator"
-            ):
-                client.send_message(
-                    chat_id,
-                    f"**you are not admin not allowed❗",
-                )
+            text = "Click here to check your settings."
 
     else:
         send_settings(chat.id, user.id, True)

@@ -723,30 +723,30 @@ def get_settings(update: Update, context: CallbackContext):
     # ONLY send settings in PM
     if chat.type != chat.PRIVATE:
         if is_user_admin(chat, user.id):
-            text = "Dimana anda ingin membuka menu pengaturan"
+            text = "Daftar Pengaturan diGrup Anda"
             msg.reply_text(
                 text,
                 reply_markup=InlineKeyboardMarkup(
                     [
                         [
                             InlineKeyboardButton(
-                                text="👤 Buka di pesan pribadi",
-                                url="t.me/{}?start=help".format(context.bot.username),
+                                text="⚙ Settings",
+                                url="t.me/{}?start=stngs_{}".format(
+                                    context.bot.username, chat.id
+                                ),
                             )
-                        ],
-                        [   
-                            InlineKeyboardButton(text="👥 Buka Disini",callback_data="helpgrup_")],   
+                        ]
                     ]
                 ),
             )
         else:
             if (
                 not client.get_chat_member(chat_id, (client.get_me()).id).status
-                == "member"
+                == "administrator"
             ):
                 client.send_message(
                     chat_id,
-                    f"**{cb.from_user.mention} you are not admin not allowed❗",
+                    f"**you are not admin not allowed❗",
                 )
 
     else:

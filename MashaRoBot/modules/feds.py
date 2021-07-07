@@ -2488,7 +2488,6 @@ MY_SUB_FED = CommandHandler("fedsubs", get_myfedsubs)
 MY_FEDS_LIST = CommandHandler("myfeds", get_myfeds_list)
 DELETEBTN_FED_HANDLER = CallbackQueryHandler(del_fed_button, pattern=r"rmfed_")
 FED_OWNER_HELP_HANDLER = CommandHandler("fedownerhelp", fed_owner_help)
-fedowner_callback_handler = CallbackQueryHandler(fedowner_about_callback, pattern=r"fedowner_")
 fedadmin_callback_handler = CallbackQueryHandler(fedadmin_about_callback, pattern=r"fedadmin_")
 feduser_callback_handler = CallbackQueryHandler(feduser_about_callback, pattern=r"feduser_")
 

@@ -169,11 +169,11 @@ scheduler.start()
 
 
 __help__ = """
-<b> Mode Malam </b>
-Tutup grup Anda pada pukul 12.00 dan buka kembali pada pukul 6.00(WIB)
-<i> Hanya tersedia untuk negara-negara Asia </i>
+*Mode Malam*
+Tutup grup Anda pada pukul 0.00 dan buka kembali pada pukul 6.00(WIB)
+_Hanya tersedia untuk negara-negara Asia._
 
 - /nightmode [ON/OFF]: Aktifkan/Nonaktifkan Mode Malam.
 
 """
-__mod_name__ = "Night 🌒"
+__mod_name__ = "Night"

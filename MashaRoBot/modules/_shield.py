@@ -179,7 +179,7 @@ async def add_nsfw(client, message):
         rm_chat(message.chat.id)
         await pablo.edit("Successfully Removed Chat From NSFW Watch service")
     else:
-        await message.reply(" I undestand only `/nsfwguardian on` or `/nsfwguardian off` only")
+        await message.reply(" I undestand only `/gshield on` or `/gshield off` only")
         
 @pbot.on_message(filters.incoming & filters.media & ~filters.private & ~filters.channel & ~filters.bot)
 async def nsfw_watch(client, message):
@@ -210,7 +210,7 @@ async def nsfw_watch(client, message):
             Escobar = midhun.id
         await client.send_message(
             message.chat.id,
-            f"**NSFW DETECTED**\n\n{hehe}'s message contain NSFW content.. So, Yone deleted the message\n\n **Nsfw Sender - User / Bot :** `{Escobar}` \n**Chat Title:** `{ctitle}` \n\n`⚔️Automatic Detections Powered By YoneAI` \n**#GROUP_GUARDIAN** ",
+            f"**NSFW DETECTED**\n\n{hehe}'s message contain NSFW content.. So, Roso deleted the message\n\n **Nsfw Sender - User / Bot :** `{Escobar}` \n**Chat Title:** `{ctitle}` \n\n`⚔️Automatic Detections Powered By Roso` \n**#GROUP_GUARDIAN** ",
         )
         message.continue_propagation()
 """
@@ -429,12 +429,12 @@ async def del_profanity(event):
 #
 
 __help__ = """
-<b> Group Guardian: </b>
+*Group Guardian:*
 ✪ Yone can protect your group from NSFW senders, Slag word users and also can force members to use English
-<b>Commmands</b>
- - /gshield <i>on/off</i> - Enable|Disable Porn cleaning
- - /globalmode <i>on/off</i> - Enable|Disable English only mode
- - /profanity <i>on/off</i> - Enable|Disable slag word cleaning
+*Commmands*
+ - /gshield `on/off` - Enable|Disable Porn cleaning
+ - /globalmode `on/off` - Enable|Disable English only mode
+ - /profanity `on/off` - Enable|Disable slag word cleaning
  
 Note: Special credits goes to Julia project and Friday Userbot
  
